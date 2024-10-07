@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <title>Plant Biodiversity Portal</title>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -55,11 +56,11 @@
             ?>
         </div>
 
-        <h2>Select a Section</h2>
-        <div class="menu-options">
-            <a href="herbarium.php" class="menu-btn">Herbarium Collection</a>
-            <a href="species_info.php" class="menu-btn">Species Information</a>
-            <a href="conservation.php" class="menu-btn">Conservation Efforts</a>
+        <br><br>
+
+        <h2>Check Out Our Main Menu For More Information!</h2>
+        <div class="menu-button">
+            <a href="main_menu.php" class="menu-btn">Go to Main Menu</a>
         </div>
         
     </main>
