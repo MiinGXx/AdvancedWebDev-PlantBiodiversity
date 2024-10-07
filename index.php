@@ -1,71 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="index">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plant Biodiversity Portal</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<body>          
-    <h1>Plant Biodiversity Portal</h1>
-    <nav>
-        <ul>            
-            <li><a href="index.php">Home</a></li>                       
-            <li><a href="about.php">About</a></li>
-            <li><a href="login.php">Login</a></li>
-            <li><a href="register.php">Register</a></li>
-        </ul>
-    </nav>    
+<body>
+    <header>
+        <h1>Plant Biodiversity Portal</h1>
+        <nav>
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="login.php">Login</a></li>
+                <li><a href="register.php">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    
     <main>
-        <h2>Welcome to Plant Biodiversity</h2>
-        
-        <!-- Callout Container for Introduction -->
-        <div class="callout">
-        <p>Our portal is dedicated to the rich and diverse world of plants, offering a gateway to explore and understand global plant biodiversity. Over centuries, botanists, taxonomists, and naturalists have painstakingly collected herbarium specimens from all corners of the earth. These specimens, preserved and cataloged with essential details like scientific names, origins, and collection dates, provide an invaluable resource for studying the intricate relationships between plant species.</p>
-            
-        <p>Through this portal, users can delve into the world of plant identification, gaining insights into how taxonomists compare new specimens to historical collections in order to confirm species identities. Whether you’re a researcher, student, or plant enthusiast, this platform serves as a hub for learning about plant diversity, taxonomy, and the preservation of botanical heritage.</p>
+        <section class="hero">
+            <h2>Empowering Plant Biodiversity Exploration</h2>
+            <p>Join us in understanding and conserving the rich diversity of plant life.</p>
+        </section>
 
-        <p>Join us in exploring the incredible variety of plant life and the vital role that herbarium collections play in the scientific study and conservation of plant species worldwide.</p>
+        <section class="callout">
+            <h3>About Our Portal</h3>
+            <p>Our portal is dedicated to the rich and diverse world of plants, offering a gateway to explore and understand global plant biodiversity. Over centuries, botanists, taxonomists, and naturalists have painstakingly collected herbarium specimens from all corners of the earth.</p>
+            <p>Through this portal, users can delve into plant identification and gain insights into taxonomic studies. Whether you're a researcher, student, or plant enthusiast, this platform serves as a hub for learning about plant diversity, taxonomy, and the preservation of botanical heritage.</p>
+        </section>
 
-        </div>
+        <section class="gallery">
+            <h3>Random Herbarium Specimen Photos</h3>
+            <div class="specimen-gallery">
+                <?php
+                    // Folder containing the herbarium specimen images
+                    $imageDir = 'images/';  // Ensure you have a folder named 'images' with your specimen photos
 
-        <br><br><br>
+                    // Get all image files from the folder
+                    $images = glob($imageDir . "*.jpg");  // Adjust the file extension as needed
 
-        <!-- Herbarium Specimen Photos Section -->
-        <h3>Random Herbarium Specimen Photos</h3>
-        <div class="specimen-gallery">
-            <?php
-                // Folder containing the herbarium specimen images
-                $imageDir = 'images/';  // Make sure you have a folder named 'images' with your specimen photos
+                    // Shuffle the images array to display them randomly
+                    shuffle($images);
 
-                // Get all image files from the folder
-                $images = glob($imageDir . "*.jpg");  // You can adjust the file extension
-
-                // Shuffle the images array to display them in random order
-                shuffle($images);
-
-                // Loop through and display up to 4 images
-                $count = 0;
-                foreach ($images as $image) {
-                    if ($count < 4) {
-                        echo '<img src="' . $image . '" alt="Herbarium Specimen">';
-                        $count++;
-                    } else {
-                        break;
+                    // Loop through and display up to 4 images
+                    $count = 0;
+                    foreach ($images as $image) {
+                        if ($count < 4) {
+                            echo '<img src="' . $image . '" alt="Herbarium Specimen" class="specimen-image">';
+                            $count++;
+                        } else {
+                            break;
+                        }
                     }
-                }
-            ?>
-        </div>
+                ?>
+            </div>
+            <br>
+        </section>
 
-        <br><br>
-
-        <h2>Check Out Our Main Menu For More Information!</h2>
-        <div class="menu-button">
-            <a href="main_menu.php" class="menu-btn">Go to Main Menu</a>
-        </div>
-        
+        <section class="main-menu">
+            <h2>Explore More</h2>
+            <div class="menu-button">
+                <a href="main_menu.php" class="menu-btn">Go to Main Menu</a>
+            </div>
+        </section>
+        <br><br><br>
     </main>
+    
     <footer>
-        <p>&copy; 2024 Plant Biodiversity</p>
+        <p>&copy; 2024 Plant Biodiversity Portal</p>
     </footer>
 </body>
 </html>

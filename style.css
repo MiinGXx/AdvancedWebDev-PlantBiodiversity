@@ -1,357 +1,382 @@
-/* General body styling */
+/* Global Styles */
+html,
 body {
-    font-family: Arial, sans-serif;
+    height: 100%; /* Ensure the body takes full height */
     margin: 0;
-    padding: 0;
-    background-color: #f0f8ff; /* Light blue background */
-    color: #333; /* Dark text color */
 }
 
-/* Header styling */
+body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f9f0; /* Light background color */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; /* Allow main content to take up remaining space */
+}
+
+/* Header Styles */
 header {
-    background-color: #228b22; /* Forest green background */
+    background-color: #4caf50;
     color: white;
-    text-align: center;
     padding: 20px;
+    text-align: center;
 }
 
 header h1 {
     margin: 0;
-    font-size: 36px;
 }
 
-body h1 {
-    font-size: 36px;
-    color: #228b22; /* Forest green */
-    text-align: center;
-}
-
-/* Navigation styling */
-nav {
-    background-color: #006400; /* Dark green */
-}
-
+/* Navigation Styles */
 nav ul {
-    list-style-type: none;
-    margin: 0;
+    list-style: none;
     padding: 0;
-    display: flex;
-    justify-content: center;
+    margin-bottom: 0;
 }
 
 nav ul li {
+    display: inline;
     margin: 0 15px;
 }
 
 nav ul li a {
-    text-decoration: none;
     color: white;
+    text-decoration: none;
     font-weight: bold;
-    padding: 14px 20px;
-    display: block;
+    padding: 10px 15px; /* Added padding for a larger clickable area */
+    border: 2px solid transparent; /* Initial transparent border */
+    border-radius: 5px; /* Rounded corners for the border */
+    transition: border-color 0.3s; /* Smooth transition for border color */
 }
 
 nav ul li a:hover {
-    background-color: #32cd32; /* Lime green background on hover */
-    color: white;
+    border-color: white; /* Change border color on hover */
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.2
+    ); /* Optional background change on hover */
+    text-decoration: none; /* Ensure no underline on hover */
 }
 
-/* Main content styling */
-main {
-    padding: 40px;
-    text-align: center;
-}
-
-main h2 {
-    font-size: 28px;
-    color: #006400; /* Dark green */
-}
-
-main p {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #555; /* Darker gray for text */
-}
-
-/* Callout container styling */
-.callout {
-    background-color: #e8f5e9; /* Light green background */
-    padding: 20px;
-    margin: 20px 0;
-    text-align: left;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-    font-size: 18px;
-    color: #333;
-    transition: box-shadow 0.3s ease; /* Smooth transition for shadow effect */
-}
-
-.callout:hover {
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-}
-
-.callout p {
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-/* Styling for the random herbarium specimen photos */
-.specimen-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 40px;
-}
-
-.specimen-gallery img {
-    border: 2px solid #006400; /* Dark green border */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
-}
-
-.specimen-gallery img:hover {
-    transform: scale(1.05); /* Slightly enlarge on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-}
-
-/* Main content styling */
-main {
-    padding: 40px;
-    text-align: center;
-}
-
-main h2 {
-    font-size: 28px;
-    color: #006400; /* Dark green */
-}
-
-main p {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #555; /* Darker gray for text */
-}
-
-/* Menu Options for Main Menu */
-.menu-options {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 10px;
-}
-
-.menu-btn {
-    display: inline-block;
-    background-color: #006400; /* Dark green background */
-    color: white;
-    padding: 20px 40px;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.menu-btn:hover {
-    background-color: #32cd32; /* Lime green background on hover */
-    transform: scale(1.05); /* Slight enlargement on hover */
-}
-
-/* Footer styling */
-footer {
-    background-color: #228b22;
+/* index.php CSS styling*/
+.index .hero {
+    background-image: url("images/plant_hero.jpg");
+    background-color: rgba(0, 0, 0, 0.4); /* Add a dark overlay */
+    background-blend-mode: darken;
+    background-size: cover;
+    background-position: center;
     color: white;
     text-align: center;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    padding: 60px 20px;
 }
 
-footer p {
+.index .hero h2 {
+    font-size: 2.5em;
     margin: 0;
 }
 
-/* main_menu.php CSS */
-.card {
-    background-color: #e6f7e6; /* Light green background */
-    border: 1px solid #b3e6b3; /* Light green border */
-    border-radius: 8px;
-    width: 45%;
-    margin: 10px 0;
+.index .hero p {
+    font-size: 1.2em;
+}
+
+/* Callout Section */
+.index .callout {
+    background-color: #ffffff;
     padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-.card h3 {
-    color: #2e8b57; /* Dark green heading */
-    margin-top: 0;
-}
-
-.card p {
-    color: #555;
-}
-
-.card a {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 15px;
-    background-color: #2e8b57; /* Dark green button */
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-}
-
-.card a:hover {
-    background-color: #1e6b47; /* Darker green on hover */
-}
-
-/* classify.php CSS */
-.classification {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.category {
-    background-color: #e6f7e6; /* Light green background */
-    padding: 15px;
-    border-radius: 5px;
-    flex: 1 1 calc(33.333% - 40px);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.category:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-}
-
-.category h3 {
-    color: #2e8b57; /* Dark green heading */
-    margin-top: 0;
-}
-
-/*  tutorial.php CSS */
-.tutorial-steps {
-    margin-top: 20px;
-}
-
-.step {
-    background-color: #e0f2e9;
-    border: 1px solid #c1e1c1;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 15px;
-    transition: transform 0.3s, background-color 0.3s;
-}
-
-.step:hover {
-    transform: scale(1.05);
-    background-color: #d0e8d0;
-}
-
-.step h3 {
-    color: #228b22;
-}
-
-.step p {
-    color: #2f4f4f;
-}
-
-/* contribute.php CSS */
-.plant-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 20px;
-    padding-top: 10px;
-}
-
-.plant-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
+    margin: 20px auto;
+    max-width: 800px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    width: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.index .callout h3 {
+    color: #4caf50;
+}
+
+/* Gallery Section */
+.index .gallery {
     text-align: center;
 }
 
-.plant-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.index .specimen-gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
 }
 
-.plant-card a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.plant-card img {
-    width: 100%;
+.index .specimen-image {
+    width: 200px; /* Fixed width for images */
     height: auto;
-    border-bottom: 1px solid #ddd;
-}
-
-.plant-card h2 {
-    font-size: 1.2em;
-    color: #2e8b57;
-    margin: 10px 0;
-}
-
-.plant-card p {
-    font-size: 1em;
-    color: #555;
-    margin: 0 0 10px 0;
-}
-
-/* plant_detail.php CSS */
-.plant-info {
-    background-color: #e0f2e9;
-    padding: 20px;
+    border: 2px solid #4caf50;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
 }
 
-.plant-info img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-.plant-info img:hover {
+.index .specimen-image:hover {
     transform: scale(1.05);
 }
 
-.plant-info h2 {
-    color: #2e8b57;
+/* Main Menu Section */
+.index .main-menu {
+    text-align: center;
+    margin: 20px 0;
 }
 
-.plant-info p {
-    color: #555;
+.index .menu-button {
+    margin-top: 10px;
 }
 
-.plant-info a {
-    color: #2e8b57;
+.index .menu-btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
     text-decoration: none;
-    transition: color 0.3s ease;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
-.plant-info a:hover {
-    color: #3cb371;
+.index .menu-btn:hover {
+    background-color: #388e3c;
+}
+
+/* main_menu.php CSS styling */
+.menu .hero {
+    background-image: url("images/plant_hero.jpg");
+    background-color: rgba(0, 0, 0, 0.4); /* Add a dark overlay */
+    background-blend-mode: darken;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+.menu h2 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.menu .hero h2 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.menu .hero p {
+    font-size: 1.2em;
+}
+
+/* Menu Options */
+.menu .menu-options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px; /* Gap between cards */
+    margin: 20px 0;
+}
+
+.menu .card {
+    background-color: #ffffff; /* White background for cards */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center text */
+    width: 250px; /* Fixed width for cards */
+    transition: transform 0.2s; /* Add hover effect */
+}
+
+.menu .card:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.menu .card h3 {
+    color: #4caf50; /* Green header for cards */
+}
+
+/* Menu Button */
+.menu .menu-btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.menu .menu-btn:hover {
+    background-color: #388e3c; /* Darker green on hover */
+}
+
+/* classify.php CSS styling */
+.classify .hero {
+    background-image: url("images/plant_hero.jpg");
+    background-color: rgba(0, 0, 0, 0.4); /* Add a dark overlay */
+    background-blend-mode: darken;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.classify h2 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.classify .hero h2 {
+    font-size: 2.5em; /* Increase font size for emphasis */
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add text shadow for better readability */
+}
+
+.classify .hero p {
+    font-size: 1.2em;
+    max-width: 800px; /* Limit width for better readability */
+    margin: 0 auto; /* Center align the paragraph */
+}
+
+.classify h3 {
+    text-align: center;
+    margin: 20px;
+    color: #4caf50; /* Green color for subheadings */
+}
+
+.classify .classification {
+    display: flex; /* Flexbox for classification categories */
+    justify-content: center; /* Center align categories */
+    flex-wrap: wrap; /* Allow wrapping for small screens */
+    gap: 20px; /* Gap between categories */
+    margin: 20px 0; /* Margin for spacing */
+}
+
+.classify .category {
+    background-color: #ffffff; /* White background for categories */
+    padding: 20px; /* Padding for category cards */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center; /* Center align text */
+    width: 250px; /* Fixed width for category cards */
+    transition: transform 0.2s, box-shadow 0.2s; /* Add hover effect */
+}
+
+.classify .category:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.classify .category h3 {
+    color: #4caf50; /* Green heading for categories */
+}
+
+.classify .example-classification {
+    display: flex; /* Flexbox for example classifications */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align items */
+    margin: 20px 0; /* Margin for spacing */
+}
+
+.classify .example-classification div {
+    background-color: #f9f9f9; /* Light background for example cards */
+    padding: 15px; /* Padding for example cards */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 400px; /* Max width for example cards */
+    text-align: center; /* Center align text */
+    margin: 10px; /* Margin between example cards */
+    transition: transform 0.2s, box-shadow 0.2s; /* Add hover effect */
+}
+
+.classify .example-classification div:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.classify .example-classification h4 {
+    color: #4caf50; /* Green color for example headings */
+    margin-bottom: 10px; /* Space below the heading */
+}
+
+.classify .plant-photo,
+.classify .herbarium-photo {
+    width: 100%; /* Responsive images */
+    border-radius: 5px; /* Rounded corners for images */
+}
+
+.classify .classification-diagram {
+    width: 100%; /* Responsive diagram */
+    max-width: 800px; /* Limit maximum width */
+    margin: 20px auto; /* Center align with margin */
+}
+
+.classify .plant-diagram {
+    text-align: center; /* Center align diagram */
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background-color: #4caf50;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    nav ul li {
+        display: block; /* Stack navigation items vertically */
+        margin: 10px 0; /* Vertical margin */
+    }
+
+    .index .hero h2 {
+        font-size: 2em; /* Slightly smaller text on smaller screens */
+    }
+
+    .index .hero p {
+        font-size: 1em; /* Smaller text for paragraphs */
+    }
+
+    .index .callout {
+        padding: 15px; /* Reduce padding on smaller screens */
+    }
+
+    .index .specimen-gallery {
+        flex-direction: column; /* Stack images vertically on small screens */
+        align-items: center; /* Center align images */
+    }
+
+    .index .specimen-image {
+        width: 100%; /* Full width for images on small screens */
+        max-width: 300px; /* Max width to prevent them from being too large */
+    }
+
+    .index .menu-btn {
+        width: 100%; /* Full width button on smaller screens */
+        margin-top: 10px; /* Margin for better spacing */
+    }
+}
+
+@media (max-width: 480px) {
+    .index .hero h2 {
+        font-size: 1.5em; /* Further reduce text size */
+    }
+
+    .index .hero p {
+        font-size: 0.9em; /* Further reduce paragraph text size */
+    }
+
+    .index .specimen-gallery {
+        margin: 10px 0; /* Adjust margin for smaller screens */
+    }
 }
