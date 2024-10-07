@@ -321,6 +321,126 @@ nav ul li a:hover {
     text-align: center; /* Center align diagram */
 }
 
+/* tutorial.php CSS styling */
+.tutorial .hero {
+    background-image: url("images/plant_hero.jpg");
+    background-color: rgba(0, 0, 0, 0.4); /* Add a dark overlay */
+    background-blend-mode: darken;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.tutorial h2 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.tutorial .hero h2 {
+    font-size: 2.5em; /* Increase font size for emphasis */
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add text shadow for better readability */
+}
+
+.tutorial .hero p {
+    font-size: 1.2em;
+    max-width: 800px; /* Limit width for better readability */
+    margin: 0 auto; /* Center align the paragraph */
+}
+
+.tutorial h3 {
+    text-align: center;
+    margin: 20px;
+    color: #4caf50; /* Green color for subheadings */
+}
+
+/* Tutorial Steps */
+.tutorial .tutorial-steps {
+    display: flex; /* Flexbox for tutorial steps */
+    justify-content: center; /* Center align steps */
+    flex-wrap: wrap; /* Allow wrapping for small screens */
+    gap: 20px; /* Gap between steps */
+    margin: 20px 0; /* Margin for spacing */
+}
+
+.tutorial .step {
+    background-color: #ffffff; /* White background for steps */
+    padding: 20px; /* Padding for step cards */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center; /* Center align text */
+    width: 250px; /* Fixed width for step cards */
+    transition: transform 0.2s, box-shadow 0.2s; /* Add hover effect */
+}
+
+.tutorial .step:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.tutorial .step h3 {
+    color: #4caf50; /* Green heading for steps */
+}
+
+/* Tools Section */
+.tutorial .tools {
+    margin: 40px 0; /* Margin for tools section */
+}
+
+.tutorial .tool-list {
+    display: flex; /* Use flexbox for tool layout */
+    flex-wrap: wrap; /* Allow wrapping for small screens */
+    gap: 20px; /* Space between tools */
+    justify-content: center; /* Center align tools */
+}
+
+.tutorial .tool {
+    background-color: #ffffff; /* White background for tools */
+    padding: 15px; /* Padding for tool cards */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 220px; /* Fixed width for tool cards */
+    text-align: center; /* Center align text */
+    transition: transform 0.2s, box-shadow 0.2s; /* Add hover effect */
+}
+
+.tutorial .tool:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.tutorial .tool-image {
+    width: 100%; /* Responsive image */
+    border-radius: 5px; /* Rounded corners for images */
+}
+
+.tutorial .tool h3 {
+    color: #4caf50; /* Green color for tool headings */
+}
+
+/* Preservation Section */
+.tutorial .preservation {
+    margin: 40px; /* Margin for preservation section */
+    padding: 20px; /* Padding inside the container */
+    border: 2px solid #4caf50; /* Green border */
+    border-radius: 8px; /* Rounded corners */
+    transition: transform 0.2s, box-shadow 0.2s; /* Add hover effect */
+}
+
+.tutorial .preservation:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.tutorial .preservation-list {
+    display: flex; /* Use flexbox for preservation layout */
+    flex-wrap: wrap; /* Allow wrapping for small screens */
+    gap: 20px; /* Space between preservation methods */
+    justify-content: center; /* Center align preservation methods */
+}
+
 /* Footer Styles */
 footer {
     text-align: center;

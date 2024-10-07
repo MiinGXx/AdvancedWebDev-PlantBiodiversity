@@ -22,7 +22,7 @@
                 I declare that this assignment is my individual work. I have not
                 worked collaboratively nor have I copied from any other student's work or from any
                 other source. I have not engaged another party to complete this assignment. I
-                am aware of the University’s policy with regards to plagiarism. I have not
+                am aware of the University's policy with regards to plagiarism. I have not
                 allowed, and will not allow, anyone to copy my work with the intention of passing
                 it off as his or her own work.
             </p>
