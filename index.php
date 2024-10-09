@@ -13,9 +13,9 @@
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="main-menu.php">Main Menu</a></li>
+                <li><a href="main_menu.php">Main Menu</a></li>      
                 <li><a href="login.php">Login</a></li>
-                <li><a href="register.php">Register</a></li>
+                <li><a href="registration.php">Register</a></li>
             </ul>
         </nav>
     </header>

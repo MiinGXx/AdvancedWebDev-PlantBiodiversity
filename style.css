@@ -64,6 +64,7 @@ nav ul li a:hover {
     text-decoration: none; /* Ensure no underline on hover */
 }
 
+/* ============================================================================= */
 /* index.php CSS styling*/
 .index .hero {
     background-image: url("images/plant_hero.jpg");
@@ -148,6 +149,7 @@ nav ul li a:hover {
     background-color: #388e3c;
 }
 
+/* ============================================================================= */
 /* main_menu.php CSS styling */
 .menu .hero {
     background-image: url("images/plant_hero.jpg");
@@ -215,6 +217,7 @@ nav ul li a:hover {
     background-color: #388e3c; /* Darker green on hover */
 }
 
+/* ============================================================================= */
 /* classify.php CSS styling */
 .classify .hero {
     background-image: url("images/plant_hero.jpg");
@@ -321,6 +324,7 @@ nav ul li a:hover {
     text-align: center; /* Center align diagram */
 }
 
+/* ============================================================================= */
 /* tutorial.php CSS styling */
 .tutorial .hero {
     background-image: url("images/plant_hero.jpg");
@@ -441,6 +445,359 @@ nav ul li a:hover {
     justify-content: center; /* Center align preservation methods */
 }
 
+/* ============================================================================= */
+/* profile.php CSS stlying */
+
+.profile {
+    background-color: #fff; /* White background for the profile card */
+    padding: 20px; /* Padding around the profile content */
+    max-width: 500px; /* Limit the width of the profile card */
+    margin: 50px auto; /* Center the profile card on the page */
+    border-radius: 8px; /* Rounded corners for the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    text-align: center; /* Center align content in the profile card */
+}
+
+.profile main {
+    padding: 20px; /* Padding inside the profile card */
+}
+
+.profile img {
+    width: 150px; /* Profile image width */
+    height: 150px; /* Profile image height */
+    object-fit: cover; /* Ensure the image fits within the circle */
+    margin-bottom: 15px; /* Space below the profile image */
+}
+
+.profile h1 {
+    color: #4caf50; /* Green color for the name */
+    font-size: 2em; /* Larger font size for the name */
+    margin-bottom: 10px;
+}
+
+.profile p {
+    color: #555; /* Slightly lighter text for details */
+    margin: 5px 0;
+    font-size: 1.1em; /* Slightly larger font for easy readability */
+}
+
+.profile p:last-child {
+    margin-top: 20px; /* Additional margin before the declaration */
+    text-align: center; /* Align the declaration text for better readability */
+}
+
+.profile nav {
+    margin-top: 20px; /* Space above the navigation links */
+}
+
+.profile nav a {
+    color: #4caf50; /* Green color for the navigation links */
+    text-decoration: none; /* Remove underline from the links */
+    margin: 0 10px; /* Space between the links */
+    font-size: 1.2em; /* Larger font size for the links */
+    background-color: #c5ffca; /* Light green background color */
+}
+
+.profile nav a:hover {
+    background-color: #c8e6c9; /* Darker green background on hover */
+}
+
+/* ============================================================================= */
+/* update_profile.php CSS styling */
+.update-profile main {
+    width: 100%;
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.update-profile h1 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.update-profile .profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.update-profile .profile-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.update-profile form {
+    width: 95%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.update-profile form div {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.update-profile label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.update-profile input[type="text"],
+.update-profile input[type="email"],
+.update-profile select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.update-profile button[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.update-profile button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.update-profile button[type="submit"]:last-child {
+    background-color: #6c757d;
+}
+
+.update-profile button[type="submit"]:last-child:hover {
+    background-color: #5a6268;
+}
+
+.update-profile p {
+    color: #999;
+    text-align: center;
+}
+
+/* ============================================================================= */
+/* registration.php CSS styling */
+.registration body {
+    height: 100%; /* Full height */
+    font-family: Arial, sans-serif; /* Set a default font */
+}
+
+.registration .container {
+    display: flex; /* Use Flexbox */
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    padding: 20px; /* Add padding for white space around the content */
+    background-color: #f0f0f0; /* Optional background color */
+}
+
+.registration h1 {
+    margin-bottom: 20px; /* Space below the heading */
+    text-align: center; /* Center the heading text */
+}
+
+.registration form {
+    background-color: #fff; /* White background for form */
+    padding: 40px; /* Padding inside form */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 500px; /* Limit width of the form */
+    width: 100%; /* Full width on small screens */
+}
+
+.registration .form-group {
+    display: flex; /* Use Flexbox for form groups */
+    justify-content: space-between; /* Space between inputs */
+    margin-bottom: 15px; /* Space below form groups */
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.registration .form-group div {
+    flex: 1; /* Allow child divs to grow equally */
+    margin-right: 50px; /* Space between columns */
+}
+
+.registration .form-group div:last-child {
+    margin-right: 0; /* Remove margin for the last element */
+}
+
+.registration input[type="text"],
+.registration input[type="date"],
+.registration input[type="password"] {
+    width: 100%; /* Set to 100% to fill the parent container */
+    max-width: 300px; /* Set a max-width for uniformity */
+    padding: 8px; /* Add some padding for better appearance */
+    margin-bottom: 10px; /* Space between fields */
+    box-sizing: border-box; /* Include padding and border in element's total width */
+}
+
+.registration input[type="radio"] {
+    margin-top: 13px; /* Space above radio buttons */
+}
+
+.registration .button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.registration .submit-button {
+    padding: 10px; /* Padding inside button */
+    background-color: #4caf50; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    flex: 1; /* Allow buttons to grow */
+    margin-right: 5px; /* Space between buttons */
+    transition: background-color 0.3 ease;
+}
+
+.registration .reset-button {
+    padding: 10px; /* Padding inside button */
+    background-color: #f44336; /* Red background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    flex: 1; /* Allow buttons to grow */
+    margin-right: 5px; /* Space between buttons */
+    transition: background-color 0.3 ease; /* Smooth color transition */
+}
+
+.registration .button-group button:last-child {
+    margin-right: 0; /* Remove margin for the last button */
+}
+
+.registration .submit-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.registration .reset-button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+.registration a {
+    text-decoration: none; /* Remove underline from links */
+    color: #4caf50; /* Green color for links */
+}
+/* ------------------------------------------*/
+/* CSS for Error Messages */
+.error {
+    color: red; /* Red color for error messages */
+    font-size: 0.9em;
+}
+
+.error-email {
+    margin-top: 10px; /* Adjust margin for better spacing */
+    color: red; /* Red color for error messages */
+    font-size: 1em;
+    text-align: center;
+}
+
+/* ============================================================================= */
+/* login.php CSS styling */
+.login body {
+    font-family: Arial, sans-serif; /* General font for the body */
+    background-color: #f4f4f4; /* Light background color */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.login .container {
+    display: flex; /* Use Flexbox */
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    padding: 20px; /* Add padding for white space around the content */
+    background-color: #f0f0f0; /* Optional background color */
+}
+
+.login h1 {
+    text-align: center; /* Center the heading */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+.login .group {
+    margin-bottom: 20px; /* Space below the group */
+}
+
+.login form {
+    background-color: #fff; /* White background for form */
+    padding: 40px; /* Padding inside form */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 400px; /* Limit width of the form */
+    width: 100%; /* Full width on small screens */
+}
+
+.login .form-group {
+    margin-bottom: 15px; /* Space between form groups */
+}
+
+.login label {
+    display: block; /* Make label a block element */
+    margin-bottom: 5px; /* Space between label and input */
+    text-align: left; /* Align text to the left */
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+    width: 100%; /* Full width for input fields */
+    padding: 10px; /* Padding inside input fields */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in total width */
+}
+
+.login button {
+    width: 100%; /* Full width for button */
+    padding: 10px; /* Padding inside button */
+    background-color: #28a745; /* Green background color */
+    color: white; /* Text color */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.login button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.login a {
+    text-decoration: none; /* Remove underline from links */
+    color: #4caf50; /* Green color for links */
+}
+
+.login .error {
+    color: red; /* Red color for error messages */
+    font-size: 14px; /* Font size for error messages */
+    margin-top: 5px; /* Space above error message */
+    text-align: center; /* Center align error message */
+}
+
+/* ============================================================================= */
 /* Footer Styles */
 footer {
     text-align: center;

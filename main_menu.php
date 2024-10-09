@@ -1,3 +1,15 @@
+<?php
+// Start the session
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['user'])) {
+    // Redirect to the login page if not logged in
+    header("Location: login.php"); // Update to your actual login page if necessary
+    exit(); // Important to exit after redirection
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" class="menu">
 <head>
@@ -11,8 +23,8 @@
         <nav>
             <ul>            
                 <li><a href="index.php">Home</a></li>       
-                <li><a href="main-menu.php">Main Menu</a></li>                
-                <li><a href="index.php">Logout</a></li>
+                <li><a href="main_menu.php">Main Menu</a></li>                   
+                <li><a href="logout.php">Logout</a></li> <!-- Consider creating a separate logout page -->
             </ul>
         </nav>    
     </header>

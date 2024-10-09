@@ -11,7 +11,7 @@
         <nav>
             <ul>            
                 <li><a href="index.php">Home</a></li>         
-                <li><a href="main-menu.php">Main Menu</a></li>              
+                <li><a href="main_menu.php">Main Menu</a></li>                 
                 <li><a href="index.php">Logout</a></li>
             </ul>
         </nav>    

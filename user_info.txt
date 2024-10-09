@@ -1,5 +1,0 @@
-{
-    "name": "Miing",
-    "email": "102779797@student.swinburne.edu.my",
-    "gender": "male"
-}

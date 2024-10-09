@@ -1,3 +1,4 @@
+
 <?php
 // Path to the text file containing user information
 $userFile = 'user_info.txt';
@@ -20,8 +21,11 @@ function saveUserInfo($file, $userInfo) {
 // Get user information
 $userInfo = getUserInfo($userFile);
 
-// Default profile image
-$defaultImage = 'images/default.jpg';
+// Default profile images based on gender
+$defaultImages = [
+    'male' => 'images/profile_images/boys.jpg',
+    'female' => 'images/profile_images/girl.png',
+];
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -37,10 +41,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 }
+
+// Determine the profile image to display
+$profileImage = isset($userInfo['gender']) && isset($defaultImages[$userInfo['gender']]) ? $defaultImages[$userInfo['gender']] : null;
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="update-profile">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,7 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h1>Update Profile</h1>
         <?php if ($userInfo): ?>
             <div class="profile-card">
-                <img src="<?php echo $defaultImage; ?>" alt="Profile Image">
+                <?php if ($profileImage): ?>
+                    <img src="<?php echo $profileImage; ?>" alt="Profile Image">
+                <?php endif; ?>
                 <form method="post">
                     <div>
                         <label for="name">Username:</label>
@@ -62,12 +71,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label for="email">Email:</label>
                         <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($userInfo['email']); ?>" required>
                     </div>
+                    
                     <div>
                         <label for="gender">Gender:</label>
                         <select id="gender" name="gender" required>
                             <option value="male" <?php echo $userInfo['gender'] === 'male' ? 'selected' : ''; ?>>Male</option>
                             <option value="female" <?php echo $userInfo['gender'] === 'female' ? 'selected' : ''; ?>>Female</option>
-                            <option value="other" <?php echo $userInfo['gender'] === 'other' ? 'selected' : ''; ?>>Other</option>
                         </select>
                     </div>
                     <button type="submit" name="update">Update</button>
