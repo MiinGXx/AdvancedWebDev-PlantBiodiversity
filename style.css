@@ -7,6 +7,7 @@ body {
 
 body {
     font-family: "Arial", sans-serif;
+    font-size: 1.2em;
     margin: 0;
     padding: 0;
     background-color: #f0f9f0; /* Light background color */
@@ -192,6 +193,14 @@ nav ul li a:hover {
     text-align: center; /* Center text */
     width: 250px; /* Fixed width for cards */
     transition: transform 0.2s; /* Add hover effect */
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+}
+
+.menu .card p {
+    margin-top: 0;
 }
 
 .menu .card:hover {
@@ -211,6 +220,7 @@ nav ul li a:hover {
     border-radius: 5px;
     font-weight: bold;
     transition: background-color 0.3s;
+    text-align: center;
 }
 
 .menu .menu-btn:hover {
@@ -426,11 +436,13 @@ nav ul li a:hover {
 
 /* Preservation Section */
 .tutorial .preservation {
-    margin: 40px; /* Margin for preservation section */
+    margin: 40px auto; /* Margin for preservation section */
+    max-width: 800px; /* Limit width of preservation container */
     padding: 20px; /* Padding inside the container */
     border: 2px solid #4caf50; /* Green border */
     border-radius: 8px; /* Rounded corners */
     transition: transform 0.2s, box-shadow 0.2s; /* Add hover effect */
+    text-align: center; /* Center align text */
 }
 
 .tutorial .preservation:hover {
@@ -444,10 +456,169 @@ nav ul li a:hover {
     gap: 20px; /* Space between preservation methods */
     justify-content: center; /* Center align preservation methods */
 }
+/* ============================================================================= */
+/* contribute.php CSS styling */
+.contribute .hero {
+    background-image: url("images/plant_hero.jpg");
+    background-color: rgba(0, 0, 0, 0.4); /* Add a dark overlay */
+    background-blend-mode: darken;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.contribute h2 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.contribute .hero h2 {
+    font-size: 2.5em; /* Increase font size for emphasis */
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add text shadow for better readability */
+}
+
+.contribute .hero p {
+    font-size: 1.2em;
+    max-width: 800px; /* Limit width for better readability */
+    margin: 0 auto; /* Center align the paragraph */
+}
+
+.contributed-plants {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.contribute .plant-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.contribute .plant-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contribute .plant-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contribute .plant-card img {
+    width: 100%;
+    height: auto;
+}
+
+.contribute .plant-card h2 {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.contribute .plant-card p {
+    color: #666;
+    margin: 0 0 10px 0;
+}
+/* ============================================================================= */
+/* plant_detail.php */
+.detail main {
+    text-align: center;
+}
+
+.detail .hero {
+    background-image: url("images/plant_hero.jpg");
+    background-color: rgba(0, 0, 0, 0.4); /* Add a dark overlay */
+    background-blend-mode: darken;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.detail h2 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.detail .hero h2 {
+    font-size: 2.5em; /* Increase font size for emphasis */
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add text shadow for better readability */
+}
+
+.detail .hero p {
+    font-size: 1.2em;
+    max-width: 800px; /* Limit width for better readability */
+    margin: 0 auto; /* Center align the paragraph */
+}
+
+.detail .plant-info {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Fixed width for the container */
+    margin: 0 auto; /* This centers the container horizontally */
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.detail .plant-info:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.detail .plant-info img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.detail .plant-info h2 {
+    color: #2e8b57;
+}
+
+.detail .plant-info p {
+    margin: 5px 0;
+}
+
+.detail .plant-info a {
+    color: #2e8b57;
+    text-decoration: none;
+}
+
+.detail .plant-info a:hover {
+    text-decoration: underline;
+}
+
+.detail .back-to-list {
+    margin-top: 50px;
+}
+
+.detail .back-to-list a {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.detail .back-to-list a:hover {
+    background-color: #388e3c;
+}
 
 /* ============================================================================= */
 /* profile.php CSS stlying */
-
 .profile {
     background-color: #fff; /* White background for the profile card */
     padding: 20px; /* Padding around the profile content */
@@ -795,6 +966,105 @@ nav ul li a:hover {
     font-size: 14px; /* Font size for error messages */
     margin-top: 5px; /* Space above error message */
     text-align: center; /* Center align error message */
+}
+
+/* ============================================================================= */
+/* about.php CSS styling */
+.about body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6; /* Light greenish background */
+    color: #333;
+}
+
+/* Hero section styling */
+.about .hero {
+    background-image: url("images/plant_hero.jpg");
+    background-color: rgba(0, 0, 0, 0.4); /* Add a dark overlay */
+    background-blend-mode: darken;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.about .hero h2 {
+    font-size: 2.5em; /* Increase font size for emphasis */
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add text shadow for better readability */
+}
+
+.about .hero p {
+    font-size: 1.2em;
+    max-width: 800px; /* Limit width for better readability */
+    margin: 0 auto; /* Center align the paragraph */
+}
+.about h3 {
+    text-align: center;
+    margin: 20px;
+    color: #4caf50; /* Green color for subheadings */
+}
+
+.about .details {
+    background-color: #e8f5e9; /* Light green background */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center;
+}
+
+.about .details ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.about .details li {
+    margin-bottom: 10px;
+}
+
+.about .details strong {
+    display: block;
+    font-weight: bold;
+    color: #388e3c; /* Darker green for emphasis */
+    margin-bottom: 5px;
+}
+
+/* Button group styling */
+.about .button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.about .button-group strong {
+    color: #388e3c;
+    margin-bottom: 10px;
+}
+
+.about .button-group .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4caf50; /* Green button background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.about .button-group .button:hover {
+    transform: scale(1.05); /* Hover effect */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 }
 
 /* ============================================================================= */

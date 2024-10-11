@@ -25,6 +25,7 @@ if (!isset($_SESSION['user'])) {
                 <li><a href="index.php">Home</a></li>       
                 <li><a href="main_menu.php">Main Menu</a></li>                   
                 <li><a href="logout.php">Logout</a></li> <!-- Consider creating a separate logout page -->
+                <li><a href="update_profile.php">Update Profile</a></li>
             </ul>
         </nav>    
     </header>

@@ -12,6 +12,7 @@
             <h1>Isaac Ng Ming Hong</h1>
             <p>Student ID: 102779797</p>
             <p>Email: 102779797@students.swinburne.edu.my</p>
+            <h2>Statement</h2>
             <p>
                 I declare that this assignment is my individual work. I have not
                 worked collaboratively nor have I copied from any other student's work or from any
