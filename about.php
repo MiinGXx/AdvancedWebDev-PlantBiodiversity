@@ -31,25 +31,28 @@
                 <br>
                 <li><strong>Tasks Completed:</strong>
                     <ul>
-                        <li>Set up project structure</li>
-                        <li>Implemented user authentication</li>
-                        <li>Designed database schema</li>
-                        <li>Developed main menu interface</li>
-                        <li>Created about page</li>
+                        <li>Task 1: Home Page</li>
+                        <li>Task 2: Main Menu Page</li>
+                        <li>Task 3: Plant Classification Page</li>
+                        <li>Task 4: Tutorial Page</li>
+                        <li>Task 5: Contribution Page</li>
+                        <li>Task 6: View Plant Details Page</li>
+                        <li>Task 7: Student Profile Page</li>
+                        <li>Task 8: Update Profile Page</li>
+                        <li>Task 9: Account Registration Page</li>
+                        <li>Task 10: Process Registration</li>
+                        <li>Task 11: Login Page</li>
+                        <li>Task 12: About Page</li>
                     </ul>
                 </li>
                 <br>
                 <li><strong>Tasks Not Completed:</strong>
                     <ul>
-                        <li>Integration with external API</li>
-                        <li>Automated testing</li>
+                        <li>None</li>
                     </ul>
-                </li>
-                <br>
                 <li><strong>Frameworks/Libraries Used:</strong>
                     <ul>
-                        <li>Bootstrap 5.1.3</li>
-                        <li>jQuery 3.6.0</li>
+                        <li><a href="https://fonts.google.com/about" target="_blank">Google Fonts</a></li>
                     </ul>
                 </li>
             </ul>

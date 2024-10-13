@@ -3,14 +3,14 @@
 
 body {
     height: 100%; /* Ensure the body takes full height */
-    font-family: "Arial", sans-serif;
-    font-size: 1.2em;
+    font-size: 1.4em;
     margin: 0;
     padding: 0;
     background-color: #f0f9f0; /* Light background color */
     color: #333;
     display: flex;
     flex-direction: column;
+    font-family: "Patrick Hand", cursive;
 }
 
 main {
@@ -71,7 +71,6 @@ nav ul li a:hover {
     color: white;
     text-align: center;
     padding: 60px 20px;
-    font-family: "Patrick Hand", cursive;
 }
 
 .hero h2 {
@@ -88,6 +87,25 @@ nav ul li a:hover {
 
 h2 {
     text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background-color: #4caf50;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
 
 /* ============================================================================= */
@@ -736,9 +754,8 @@ h2 {
 
 /* ============================================================================= */
 /* registration.php CSS styling */
-.registration body {
+.registration {
     height: 100%; /* Full height */
-    font-family: Arial, sans-serif; /* Set a default font */
 }
 
 .registration .container {
@@ -812,7 +829,8 @@ h2 {
     transition: background-color 0.3 ease;
 }
 
-.registration .reset-button {
+.registration .reset-button,
+.registration .cancel-button {
     padding: 10px; /* Padding inside button */
     background-color: #f44336; /* Red background */
     color: white; /* White text */
@@ -832,7 +850,8 @@ h2 {
     background-color: #45a049; /* Darker green on hover */
 }
 
-.registration .reset-button:hover {
+.registration .reset-button:hover,
+.registration .cancel-button:hover {
     background-color: #d32f2f; /* Darker red on hover */
 }
 
@@ -856,11 +875,8 @@ h2 {
 
 /* ============================================================================= */
 /* login.php CSS styling */
-.login body {
-    font-family: Arial, sans-serif; /* General font for the body */
-    background-color: #f4f4f4; /* Light background color */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
+.login {
+    height: 100%; /* Full height */
 }
 
 .login .container {
@@ -909,7 +925,7 @@ h2 {
     box-sizing: border-box; /* Include padding and border in total width */
 }
 
-.login button {
+.login .submit-button {
     width: 100%; /* Full width for button */
     padding: 10px; /* Padding inside button */
     background-color: #28a745; /* Green background color */
@@ -917,10 +933,25 @@ h2 {
     border: none; /* Remove default border */
     border-radius: 4px; /* Rounded corners */
     cursor: pointer; /* Pointer cursor on hover */
+    margin-bottom: 10px;
 }
 
-.login button:hover {
+.login .cancel-button {
+    width: 100%; /* Full width for button */
+    padding: 10px; /* Padding inside button */
+    background-color: #dc3545; /* Red background color */
+    color: white; /* Text color */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.login .submit-button:hover {
     background-color: #218838; /* Darker green on hover */
+}
+
+.login .cancel-button {
+    background-color: #dc3545; /* Red background color */
 }
 
 .login a {
@@ -937,15 +968,6 @@ h2 {
 
 /* ============================================================================= */
 /* about.php CSS styling */
-.about body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f7f6; /* Light greenish background */
-    color: #333;
-}
-
-/* Hero section styling */
 .about .hero {
     background-image: url("images/plant_hero.jpg");
     background-color: rgba(0, 0, 0, 0.4); /* Add a dark overlay */
@@ -994,6 +1016,15 @@ h2 {
     margin-bottom: 10px;
 }
 
+.about .details a {
+    color: black; /* Green color for links */
+    text-decoration: none; /* Remove underline from links */
+}
+
+.about .details a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
 .about .details strong {
     display: block;
     font-weight: bold;
@@ -1001,7 +1032,6 @@ h2 {
     margin-bottom: 5px;
 }
 
-/* Button group styling */
 .about .button-group {
     display: flex;
     flex-direction: column;
@@ -1045,7 +1075,6 @@ h2 {
     align-items: center;
     height: 100vh;
     background-color: #f8f9fa;
-    font-family: Arial, sans-serif;
 }
 
 /* Styles for the section */
@@ -1087,27 +1116,6 @@ h2 {
 .identify section a:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* ============================================================================= */
-/* Footer Styles */
-footer {
-    text-align: center;
-    padding: 15px 0;
-    background-color: #4caf50;
-    color: white;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-footer a {
-    color: white;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
 }
 
 /* ============================================================================= */

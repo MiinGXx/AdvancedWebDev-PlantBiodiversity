@@ -1,3 +1,24 @@
+<?php
+// Start the session
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['user'])) {
+    // Change the navigation to include the login and registration links
+    $nav = '<li><a href="index.php">Home</a></li>';
+    $nav .= '<li><a href="main_menu.php">Main Menu</a></li>';
+    $nav .= '<li><a href="about.php">About</a></li>';
+    $nav .= '<li><a href="login.php">Login</a></li>';
+    $nav .= '<li><a href="registration.php">Register</a></li>';
+} else {
+    // Change the navigation to include the main menu and logout links
+    $nav = '<li><a href="index.php">Home</a></li>';
+    $nav .= '<li><a href="main_menu.php">Main Menu</a></li>';
+    $nav .= '<li><a href="about.php">About</a></li>';
+    $nav .= '<li><a href="logout.php">Logout</a></li>';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" class="index">
 <head>
@@ -12,12 +33,8 @@
         <h1>Plant Biodiversity Portal</h1>
         <nav>
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="main_menu.php">Main Menu</a></li>      
-                <li><a href="login.php">Login</a></li>
-                <li><a href="registration.php">Register</a></li>
+                <?php echo $nav; ?>
             </ul>
-        </nav>
     </header>
     
     <main>
@@ -33,11 +50,11 @@
         </section>
 
         <section class="gallery">
-            <h3>Random Herbarium Specimen Photos</h3>
+            <h2>Herbarium Specimen Photos</h2>
             <div class="specimen-gallery">
                 <?php
                     // Folder containing the herbarium specimen images
-                    $imageDir = 'images/plant_images/';  // Ensure you have a folder named 'images' with your specimen photos
+                    $imageDir = 'images/herbarium_images/';  // Ensure you have a folder named 'images' with your specimen photos
 
                     // Get all image files from the folder
                     $images = glob($imageDir . "*.jpg");  // Adjust the file extension as needed

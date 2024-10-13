@@ -92,6 +92,7 @@ unset($_SESSION['post_data']);
             <div class="button-group">
                 <button type="submit" class="submit-button">Register</button>
                 <button type="reset" class="reset-button">Reset</button>
+                <button type="button" class="cancel-button" onclick="window.location.href='index.php'">Cancel</button>
             </div>
 
             <!-- Display email duplicate error at the bottom -->

@@ -92,7 +92,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
 
-            <button type="submit">Login</button>
+            <button type="submit" class="submit-button">Login</button>
+            <button type="button" class="cancel-button" onclick="window.location.href='index.php'">Cancel</button>
 
             <?php if (isset($errors['login'])): ?>
                 <div class="error"><?php echo $errors['login']; ?></div>
