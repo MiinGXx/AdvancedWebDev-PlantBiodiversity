@@ -7,8 +7,8 @@
 
 <body>
     <main>
-        <section class="profile">
-            <img src="path/to/your/photo.jpg" alt="Profile Image">
+        <section class="profile-content">
+            <img src="images/student_profile.jpg" alt="Profile Image">
             <h1>Isaac Ng Ming Hong</h1>
             <p>Student ID: 102779797</p>
             <p>Email: 102779797@students.swinburne.edu.my</p>
@@ -23,15 +23,15 @@
             </p>
         </section>
 
-        <section>
-            <nav>
-                <ul>
-                    <li><a href="index.php">Main Page</a></li>
-                    <li><a href="about.php">About</a></li>
-                </ul>
-            </nav>
+        <section class="links">
+            <h2>Links</h2>
+            <ul class="button-list">
+                <li><a href="index.php" class="button">Back to homepage</a></li>
+                <li><a href="about.php" class="button">About Page</a></li>
+            </ul>
         </section>
     </main>
+    
     
 </body>
 </html>

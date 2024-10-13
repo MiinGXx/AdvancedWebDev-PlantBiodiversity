@@ -53,22 +53,22 @@
             <h2>Tools for Creating Herbarium Specimens</h2>
             <div class="tool-list">
                 <div class="tool">
-                    <img src="images/press.jpg" alt="Plant Press" class="tool-image">
+                    <img src="images/tutorial_images/Plant_Press.jpg" alt="Plant Press" class="tool-image">
                     <h3>Plant Press</h3>
                     <p>A plant press is used to flatten and dry plant specimens for preservation.</p>
                 </div>
                 <div class="tool">
-                    <img src="images/herbarium_sheet.jpg" alt="Herbarium Sheet" class="tool-image">
+                    <img src="images/tutorial_images/Herbarium_Sheet.jpg" alt="Herbarium Sheet" class="tool-image">
                     <h3>Herbarium Sheet</h3>
                     <p>Herbarium sheets are used to mount and store dried plant specimens along with collection information.</p>
                 </div>
                 <div class="tool">
-                    <img src="images/glue.jpg" alt="Glue" class="tool-image">
+                    <img src="images/tutorial_images/Glue.jpg" alt="Glue" class="tool-image">
                     <h3>Glue</h3>
                     <p>Glue is used to attach dried plant specimens to herbarium sheets securely.</p>
                 </div>
                 <div class="tool">
-                    <img src="images/labels.jpg" alt="Labels" class="tool-image">
+                    <img src="images/tutorial_images/Labels.jpg" alt="Labels" class="tool-image">
                     <h3>Labels</h3>
                     <p>Labels provide essential information about the plant specimen, including scientific name, collection date, and location.</p>
                 </div>
@@ -90,7 +90,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Plant Biodiversity</p>
+        <p>&copy; 2024 Plant Biodiversity | <a href="profile.php">Isaac Ng Ming Hong</a></p></p>
     </footer>
 
 </body>

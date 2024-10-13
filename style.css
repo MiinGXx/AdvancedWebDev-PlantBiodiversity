@@ -1,11 +1,8 @@
 /* Global Styles */
-html,
-body {
-    height: 100%; /* Ensure the body takes full height */
-    margin: 0;
-}
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Patrick+Hand&display=swap");
 
 body {
+    height: 100%; /* Ensure the body takes full height */
     font-family: "Arial", sans-serif;
     font-size: 1.2em;
     margin: 0;
@@ -65,9 +62,7 @@ nav ul li a:hover {
     text-decoration: none; /* Ensure no underline on hover */
 }
 
-/* ============================================================================= */
-/* index.php CSS styling*/
-.index .hero {
+.hero {
     background-image: url("images/plant_hero.jpg");
     background-color: rgba(0, 0, 0, 0.4); /* Add a dark overlay */
     background-blend-mode: darken;
@@ -76,18 +71,27 @@ nav ul li a:hover {
     color: white;
     text-align: center;
     padding: 60px 20px;
+    font-family: "Patrick Hand", cursive;
 }
 
-.index .hero h2 {
-    font-size: 2.5em;
+.hero h2 {
+    font-size: 2.5em; /* Increase font size for emphasis */
     margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add text shadow for better readability */
 }
 
-.index .hero p {
-    font-size: 1.2em;
+.hero p {
+    font-size: 1.5em;
+    max-width: 800px; /* Limit width for better readability */
+    margin: 0 auto; /* Center align the paragraph */
 }
 
-/* Callout Section */
+h2 {
+    text-align: center;
+}
+
+/* ============================================================================= */
+/* index.php CSS styling*/
 .index .callout {
     background-color: #ffffff;
     padding: 20px;
@@ -101,7 +105,6 @@ nav ul li a:hover {
     color: #4caf50;
 }
 
-/* Gallery Section */
 .index .gallery {
     text-align: center;
 }
@@ -126,7 +129,6 @@ nav ul li a:hover {
     transform: scale(1.05);
 }
 
-/* Main Menu Section */
 .index .main-menu {
     text-align: center;
     margin: 20px 0;
@@ -152,31 +154,6 @@ nav ul li a:hover {
 
 /* ============================================================================= */
 /* main_menu.php CSS styling */
-.menu .hero {
-    background-image: url("images/plant_hero.jpg");
-    background-color: rgba(0, 0, 0, 0.4); /* Add a dark overlay */
-    background-blend-mode: darken;
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    padding: 60px 20px;
-}
-.menu h2 {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.menu .hero h2 {
-    font-size: 2.5em;
-    margin: 0;
-}
-
-.menu .hero p {
-    font-size: 1.2em;
-}
-
-/* Menu Options */
 .menu .menu-options {
     display: flex;
     justify-content: center;
@@ -229,38 +206,14 @@ nav ul li a:hover {
 
 /* ============================================================================= */
 /* classify.php CSS styling */
-.classify .hero {
-    background-image: url("images/plant_hero.jpg");
-    background-color: rgba(0, 0, 0, 0.4); /* Add a dark overlay */
-    background-blend-mode: darken;
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    padding: 60px 20px;
-}
-
-.classify h2 {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.classify .hero h2 {
-    font-size: 2.5em; /* Increase font size for emphasis */
-    margin: 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add text shadow for better readability */
-}
-
-.classify .hero p {
-    font-size: 1.2em;
-    max-width: 800px; /* Limit width for better readability */
-    margin: 0 auto; /* Center align the paragraph */
-}
-
 .classify h3 {
     text-align: center;
     margin: 20px;
     color: #4caf50; /* Green color for subheadings */
+}
+
+.classify .description {
+    margin: 20px 100px; /* Margin for description section */
 }
 
 .classify .classification {
@@ -297,12 +250,19 @@ nav ul li a:hover {
     margin: 20px 0; /* Margin for spacing */
 }
 
+/* make the images smaller */
+.classify .example-classification img {
+    width: 100%; /* Responsive images */
+    max-width: 400px; /* Limit maximum width */
+    border-radius: 5px; /* Rounded corners for images */
+}
+
 .classify .example-classification div {
     background-color: #f9f9f9; /* Light background for example cards */
     padding: 15px; /* Padding for example cards */
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    max-width: 400px; /* Max width for example cards */
+    max-width: 600px; /* Max width for example cards */
     text-align: center; /* Center align text */
     margin: 10px; /* Margin between example cards */
     transition: transform 0.2s, box-shadow 0.2s; /* Add hover effect */
@@ -336,34 +296,6 @@ nav ul li a:hover {
 
 /* ============================================================================= */
 /* tutorial.php CSS styling */
-.tutorial .hero {
-    background-image: url("images/plant_hero.jpg");
-    background-color: rgba(0, 0, 0, 0.4); /* Add a dark overlay */
-    background-blend-mode: darken;
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    padding: 60px 20px;
-}
-
-.tutorial h2 {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.tutorial .hero h2 {
-    font-size: 2.5em; /* Increase font size for emphasis */
-    margin: 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add text shadow for better readability */
-}
-
-.tutorial .hero p {
-    font-size: 1.2em;
-    max-width: 800px; /* Limit width for better readability */
-    margin: 0 auto; /* Center align the paragraph */
-}
-
 .tutorial h3 {
     text-align: center;
     margin: 20px;
@@ -411,6 +343,10 @@ nav ul li a:hover {
 }
 
 .tutorial .tool {
+    display: flex; /* Make the card a flex container */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center children vertically */
+    align-items: center; /* Center children horizontally */
     background-color: #ffffff; /* White background for tools */
     padding: 15px; /* Padding for tool cards */
     border-radius: 8px; /* Rounded corners */
@@ -458,37 +394,16 @@ nav ul li a:hover {
 }
 /* ============================================================================= */
 /* contribute.php CSS styling */
-.contribute .hero {
-    background-image: url("images/plant_hero.jpg");
-    background-color: rgba(0, 0, 0, 0.4); /* Add a dark overlay */
-    background-blend-mode: darken;
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    padding: 60px 20px;
-}
-
-.contribute h2 {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.contribute .hero h2 {
-    font-size: 2.5em; /* Increase font size for emphasis */
-    margin: 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add text shadow for better readability */
-}
-
-.contribute .hero p {
-    font-size: 1.2em;
-    max-width: 800px; /* Limit width for better readability */
-    margin: 0 auto; /* Center align the paragraph */
-}
-
-.contributed-plants {
+.contribute .contributed-plants {
     margin-top: 20px;
+    margin-bottom: 30px;
     text-align: center;
+}
+
+.contribute .contributed-plants a {
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
 }
 
 .contribute .plant-list {
@@ -515,50 +430,26 @@ nav ul li a:hover {
 
 .contribute .plant-card img {
     width: 100%;
-    height: auto;
+    height: 150px; /* Set a fixed height */
+    object-fit: cover; /* Maintain aspect ratio and cover the area */
 }
 
 .contribute .plant-card h2 {
     font-size: 1.2em;
     margin: 10px 0;
+    color: #333; /* Set the desired text color */
+    text-decoration: none; /* Remove underline */
 }
 
 .contribute .plant-card p {
     color: #666;
     margin: 0 0 10px 0;
 }
+
 /* ============================================================================= */
 /* plant_detail.php */
 .detail main {
     text-align: center;
-}
-
-.detail .hero {
-    background-image: url("images/plant_hero.jpg");
-    background-color: rgba(0, 0, 0, 0.4); /* Add a dark overlay */
-    background-blend-mode: darken;
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    padding: 60px 20px;
-}
-
-.detail h2 {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.detail .hero h2 {
-    font-size: 2.5em; /* Increase font size for emphasis */
-    margin: 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add text shadow for better readability */
-}
-
-.detail .hero p {
-    font-size: 1.2em;
-    max-width: 800px; /* Limit width for better readability */
-    margin: 0 auto; /* Center align the paragraph */
 }
 
 .detail .plant-info {
@@ -601,6 +492,7 @@ nav ul li a:hover {
 
 .detail .back-to-list {
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .detail .back-to-list a {
@@ -618,70 +510,124 @@ nav ul li a:hover {
 }
 
 /* ============================================================================= */
-/* profile.php CSS stlying */
+/* profile.php CSS styling */
 .profile {
-    background-color: #fff; /* White background for the profile card */
-    padding: 20px; /* Padding around the profile content */
-    max-width: 500px; /* Limit the width of the profile card */
-    margin: 50px auto; /* Center the profile card on the page */
-    border-radius: 8px; /* Rounded corners for the card */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    text-align: center; /* Center align content in the profile card */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    background-color: #f5f5f5; /* Light background to contrast the profile card */
 }
 
 .profile main {
-    padding: 20px; /* Padding inside the profile card */
-}
-
-.profile img {
-    width: 150px; /* Profile image width */
-    height: 150px; /* Profile image height */
-    object-fit: cover; /* Ensure the image fits within the circle */
-    margin-bottom: 15px; /* Space below the profile image */
-}
-
-.profile h1 {
-    color: #4caf50; /* Green color for the name */
-    font-size: 2em; /* Larger font size for the name */
-    margin-bottom: 10px;
-}
-
-.profile p {
-    color: #555; /* Slightly lighter text for details */
-    margin: 5px 0;
-    font-size: 1.1em; /* Slightly larger font for easy readability */
-}
-
-.profile p:last-child {
-    margin-top: 20px; /* Additional margin before the declaration */
-    text-align: center; /* Align the declaration text for better readability */
-}
-
-.profile nav {
-    margin-top: 20px; /* Space above the navigation links */
-}
-
-.profile nav a {
-    color: #4caf50; /* Green color for the navigation links */
-    text-decoration: none; /* Remove underline from the links */
-    margin: 0 10px; /* Space between the links */
-    font-size: 1.2em; /* Larger font size for the links */
-    background-color: #c5ffca; /* Light green background color */
-}
-
-.profile nav a:hover {
-    background-color: #c8e6c9; /* Darker green background on hover */
-}
-
-/* ============================================================================= */
-/* update_profile.php CSS styling */
-.update-profile main {
     width: 100%;
     max-width: 600px;
     margin: 40px auto;
     background-color: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    padding: 20px; /* Added padding to main container */
+    box-sizing: border-box;
+}
+
+.profile .profile-content {
+    text-align: center;
+    padding: 20px;
+}
+
+.profile .profile-content img {
+    border-radius: 50%; /* Make the profile image circular */
+    width: 200px; /* Adjusted size for better fit */
+    height: 200px;
+    object-fit: cover; /* Ensures the image is properly contained within the circular frame */
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Add a shadow to the image */
+}
+
+.profile .profile-content h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #333; /* Darker text color */
+}
+
+.profile .profile-content p {
+    font-size: 18px;
+    margin: 5px 0;
+    color: #666; /* Slightly lighter text for secondary info */
+}
+
+.profile .profile-content h2 {
+    font-size: 22px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #4caf50; /* Use a consistent color for headings */
+}
+
+.profile .links {
+    text-align: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.profile .links h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #4caf50; /* Consistent green color for headings */
+}
+
+.profile .button-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.profile .button-list .button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.profile .button-list .button:hover {
+    background-color: #388e3c;
+}
+
+/* ============================================================================= */
+/* update_profile.php CSS styling */
+.update-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center the content */
+    align-items: center; /* Horizontally center the content */
+    min-height: 100vh; /* Full viewport height */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.update-profile main {
+    width: 100%;
+    max-width: 600px; /* Set maximum width */
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    height: auto; /* Dynamic height based on content */
+    margin: auto; /* Vertically center the content inside its container */
+}
+
+.update-profile section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 .update-profile h1 {
@@ -695,7 +641,10 @@ nav ul li a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center; /* Center content vertically */
     gap: 20px;
+    width: 100%; /* Ensure the profile card takes full width of the container */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
 }
 
 .update-profile .profile-card img {
@@ -706,65 +655,83 @@ nav ul li a:hover {
 }
 
 .update-profile form {
-    width: 95%;
-    max-width: 400px;
-    text-align: center;
+    width: 100%; /* Ensure the form takes full width of the container */
+    padding: 20px; /* Add padding inside the form */
+    border-radius: 5px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
 }
 
-.update-profile form div {
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.update-profile .form-group {
+    display: flex; /* Use Flexbox for form groups */
+    justify-content: space-between; /* Space between inputs */
+    margin-bottom: 10px; /* Space below form groups */
+    width: 100%; /* Ensure the form group takes full width of the container */
 }
 
-.update-profile label {
-    font-weight: bold;
-    color: #333;
-    display: block;
-    margin-bottom: 5px;
-    text-align: center;
+.update-profile .form-group div {
+    flex: 1; /* Allow child divs to grow equally */
+    margin-right: 10px; /* Space between columns */
+}
+
+.update-profile .form-group div:last-child {
+    margin-right: 0; /* Remove margin for the last element */
 }
 
 .update-profile input[type="text"],
-.update-profile input[type="email"],
-.update-profile select {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+.update-profile input[type="date"],
+.update-profile input[type="password"] {
+    width: 100%; /* Set to 100% to fill the parent container */
+    padding: 8px; /* Add some padding for better appearance */
+    margin-bottom: 10px; /* Space between fields */
+    box-sizing: border-box; /* Include padding and border in element's total width */
 }
 
-.update-profile button[type="submit"] {
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: inline-block;
-    margin-right: 10px;
+.update-profile input[type="radio"] {
+    margin-top: 13px; /* Space above radio buttons */
 }
 
-.update-profile button[type="submit"]:hover {
-    background-color: #218838;
+.update-profile .button-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Ensure the button group takes full width of the container */
 }
 
-.update-profile button[type="submit"]:last-child {
-    background-color: #6c757d;
+.update-profile .submit-button,
+.update-profile .reset-button {
+    padding: 10px; /* Padding inside button */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    flex: 1; /* Allow buttons to grow */
+    margin-right: 10px; /* Space between buttons */
+    transition: background-color 0.3s ease; /* Smooth color transition */
 }
 
-.update-profile button[type="submit"]:last-child:hover {
-    background-color: #5a6268;
+.update-profile .submit-button {
+    background-color: #4caf50; /* Green background */
+    color: white; /* White text */
 }
 
-.update-profile p {
-    color: #999;
-    text-align: center;
+.update-profile .reset-button {
+    background-color: #f44336; /* Red background */
+    color: white; /* White text */
+}
+
+.update-profile .button-group button:last-child {
+    margin-right: 0; /* Remove margin for the last button */
+}
+
+.update-profile .submit-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.update-profile .reset-button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+.update-profile a {
+    text-decoration: none; /* Remove underline from links */
+    color: #4caf50; /* Green color for links */
 }
 
 /* ============================================================================= */
@@ -1066,6 +1033,61 @@ nav ul li a:hover {
     transform: scale(1.05); /* Hover effect */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 }
+/* ============================================================================= */
+/* identify.php CSS styling */
+.identify {
+    height: 100%;
+}
+
+.identify main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+/* Styles for the section */
+.identify section {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the heading */
+.identify section h1 {
+    color: #4caf50;
+    margin-bottom: 16px;
+}
+
+/* Styles for the paragraph */
+.identify section p {
+    color: #6c757d;
+    margin-bottom: 12px;
+}
+
+/* Styles for the link */
+.identify section a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4caf50; /* Green button background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.identify section a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 /* ============================================================================= */
 /* Footer Styles */
@@ -1079,6 +1101,16 @@ footer {
     width: 100%;
 }
 
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================================================= */
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     nav ul li {

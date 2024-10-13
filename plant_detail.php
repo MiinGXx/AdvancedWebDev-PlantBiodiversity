@@ -1,13 +1,13 @@
 <?php
 $plants = [
     1 => [
-        'scientific_name' => 'Rosa chinensis',
-        'common_name' => 'China Rose',
-        'family' => 'Rosaceae',
-        'genus' => 'Rosa',
-        'species' => 'R. chinensis',
-        'photo' => 'images/china_rose.jpg',
-        'description_pdf' => 'pdf/china_rose_description.pdf',
+        'scientific_name' => 'Endiandra sieberi',
+        'common_name' => 'Corkwood',
+        'family' => 'Lauraceae',
+        'genus' => 'Endiandra',
+        'species' => 'E. sieberi',
+        'photo' => 'images/plant_images/Lauraceae_Endiandra_Sieberi.jpg',
+        'description_pdf' => 'pdf/corkwood_description.pdf',
     ],
     2 => [
         'scientific_name' => 'Ficus lyrata',
@@ -15,7 +15,7 @@ $plants = [
         'family' => 'Moraceae',
         'genus' => 'Ficus',
         'species' => 'F. lyrata',
-        'photo' => 'images/fiddle_leaf_fig.jpg',
+        'photo' => 'images/plant_images/Moraceae_Ficus_Lyrata.jpg',
         'description_pdf' => 'pdf/fiddle_leaf_fig_description.pdf',
     ],
     3 => [
@@ -24,7 +24,7 @@ $plants = [
         'family' => 'Asphodelaceae',
         'genus' => 'Aloe',
         'species' => 'A. vera',
-        'photo' => 'images/aloe_vera.jpg',
+        'photo' => 'images/plant_images/Asphodelaceae_Aloe_Vera.jpg',
         'description_pdf' => 'pdf/aloe_vera_description.pdf',
     ],
     4 => [
@@ -33,7 +33,7 @@ $plants = [
         'family' => 'Araceae',
         'genus' => 'Monstera',
         'species' => 'M. deliciosa',
-        'photo' => 'images/monstera.jpg',
+        'photo' => 'images/plant_images/Araceae_Monsterra_Deliciosa.jpg',
         'description_pdf' => 'pdf/monstera_description.pdf',
     ],
     5 => [
@@ -42,7 +42,7 @@ $plants = [
         'family' => 'Lamiaceae',
         'genus' => 'Lavandula',
         'species' => 'L. angustifolia',
-        'photo' => 'images/lavender.jpg',
+        'photo' => 'images/plant_images/Lamiaceae_Lavandula_Angustifolia.jpg',
         'description_pdf' => 'pdf/lavender_description.pdf',
     ],
 ];
@@ -104,7 +104,7 @@ $plant = $plants[$plant_id];
     </main>
 
     <footer>
-        <p>&copy; 2024 Plant Biodiversity</p>
+        <p>&copy; 2024 Plant Biodiversity | <a href="profile.php">Isaac Ng Ming Hong</a></p></p>
     </footer>
 </body>
 </html>

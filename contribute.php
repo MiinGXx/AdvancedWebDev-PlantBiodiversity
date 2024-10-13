@@ -2,29 +2,29 @@
     // Array of plant data
     $plants = [
         1 => [
-            'scientific_name' => 'Rosa chinensis',
-            'common_name' => 'China Rose',
-            'photo' => 'path/to/china_rose.jpg',
+            'scientific_name' => 'Endiandra sieberi',
+            'common_name' => 'Corkwood',
+            'photo' => 'images/plant_images/Lauraceae_Endiandra_Sieberi.jpg',
         ],
         2 => [
             'scientific_name' => 'Ficus lyrata',
             'common_name' => 'Fiddle Leaf Fig',
-            'photo' => 'path/to/fiddle_leaf_fig.jpg',
+            'photo' => 'images/plant_images/Moraceae_Ficus_Lyrata.jpg',
         ],
         3 => [
             'scientific_name' => 'Aloe vera',
             'common_name' => 'Aloe Vera',
-            'photo' => 'path/to/aloe_vera.jpg',
+            'photo' => 'images/plant_images/Asphodelaceae_Aloe_Vera.jpg',
         ],
         4 => [
             'scientific_name' => 'Monstera deliciosa',
             'common_name' => 'Swiss Cheese Plant',
-            'photo' => 'path/to/monstera.jpg',
+            'photo' => 'images/plant_images/Araceae_Monsterra_Deliciosa.jpg',
         ],
         5 => [
             'scientific_name' => 'Lavandula angustifolia',
             'common_name' => 'Lavender',
-            'photo' => 'path/to/lavender.jpg',
+            'photo' => 'images/plant_images/Lamiaceae_Lavandula_Angustifolia.jpg',
         ],
     ];
 ?>  
@@ -75,7 +75,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Plant Biodiversity</p>
+        <p>&copy; 2024 Plant Biodiversity | <a href="profile.php">Isaac Ng Ming Hong</a></p></p>
     </footer>
 </body>
 </html>

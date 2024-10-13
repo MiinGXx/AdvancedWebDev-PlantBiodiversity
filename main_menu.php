@@ -25,7 +25,7 @@ if (!isset($_SESSION['user'])) {
                 <li><a href="index.php">Home</a></li>       
                 <li><a href="main_menu.php">Main Menu</a></li>                   
                 <li><a href="logout.php">Logout</a></li> <!-- Consider creating a separate logout page -->
-                <li><a href="update_profile.php">Update Profile</a></li>
+                <li><a href="update_profile.php">View Profile</a></li>
             </ul>
         </nav>    
     </header>
@@ -64,7 +64,7 @@ if (!isset($_SESSION['user'])) {
     </main>
 
     <footer>
-        <p>&copy; 2024 Plant Biodiversity</p>
+        <p>&copy; 2024 Plant Biodiversity Portal | <a href="profile.php">Isaac Ng Ming Hong</a></p>
     </footer>
 </body>
 </html>

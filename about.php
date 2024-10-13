@@ -19,7 +19,7 @@
 
     <main>
         <section class="hero">
-            <h2>About</h2>
+            <h2>About This Assignment</h2>
             <p>Presenting the taks completed, tasks not completed, frameworks/libraries used, and a link to the video presentation.</p>
         </section>
 
@@ -59,12 +59,12 @@
             <strong>Video Presentation</strong>
             <a href="https://example.com/presentation" class="button">Watch here</a> <br><br>
             <strong>Return to Home Page</strong>
-            <a href="index.php" class="button">Home</a>
+            <a href="index.php" class="button">Back to home page</a>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Plant Biodiversity</p>
+        <p>&copy; 2024 Plant Biodiversity Portal | <a href="profile.php">Isaac Ng Ming Hong</a></p>
     </footer>
 
 </body>

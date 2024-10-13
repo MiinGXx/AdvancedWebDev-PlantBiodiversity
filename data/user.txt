@@ -1,3 +1,2 @@
 First Name:Miing|Last Name:Isaac|DOB:2024-10-15|Gender:male|Email:miing@gmail.com|Hometown:Kuching|Password:password123!
-First Name:John|Last Name:Doe|DOB:2024-10-10|Gender:male|Email:john@gmail.com|Hometown:Kuching|Password:password123!
-First Name:Mary|Last Name:Jane|DOB:2024-10-11|Gender:female|Email:mary@gmail.com|Hometown:Kuching|Password:password123!
+First Name:Mary|Last Name:Jane|DOB:2024-10-15|Gender:female|Email:mary@gmail.com|Hometown:Kuching|Password:abc123!

@@ -37,7 +37,7 @@
             <div class="specimen-gallery">
                 <?php
                     // Folder containing the herbarium specimen images
-                    $imageDir = 'images/';  // Ensure you have a folder named 'images' with your specimen photos
+                    $imageDir = 'images/plant_images/';  // Ensure you have a folder named 'images' with your specimen photos
 
                     // Get all image files from the folder
                     $images = glob($imageDir . "*.jpg");  // Adjust the file extension as needed
@@ -70,7 +70,7 @@
     </main>
     
     <footer>
-        <p>&copy; 2024 Plant Biodiversity Portal</p>
+        <p>&copy; 2024 Plant Biodiversity Portal | <a href="profile.php">Isaac Ng Ming Hong</a></p>
     </footer>
 </body>
 </html>
