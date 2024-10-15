@@ -62,7 +62,7 @@
 
         <section class="button-group">
             <strong>Video Presentation</strong>
-            <a href="https://example.com/presentation" class="button">Watch here</a> <br><br>
+            <a href="https://youtu.be/IfIQahEw0xU" target="_blank" class="button">Watch here</a> <br><br>
             <strong>Return to Home Page</strong>
             <a href="index.php" class="button">Back to home page</a>
         </section>
