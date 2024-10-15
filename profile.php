@@ -2,7 +2,8 @@
 <html lang="en" class="profile">
 <head>
     <title>Plant Biodiversity Portal | Profile</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 
 <body>

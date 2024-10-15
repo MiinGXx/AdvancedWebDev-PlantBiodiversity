@@ -7,7 +7,7 @@ $plants = [
         'genus' => 'Endiandra',
         'species' => 'E. sieberi',
         'photo' => 'images/plant_images/Lauraceae_Endiandra_Sieberi.jpg',
-        'description_pdf' => 'pdf/corkwood_description.pdf',
+        'description_pdf' => 'pdf/Endiandra_Sieberi-Detail.pdf',
     ],
     2 => [
         'scientific_name' => 'Ficus lyrata',
@@ -16,7 +16,7 @@ $plants = [
         'genus' => 'Ficus',
         'species' => 'F. lyrata',
         'photo' => 'images/plant_images/Moraceae_Ficus_Lyrata.jpg',
-        'description_pdf' => 'pdf/fiddle_leaf_fig_description.pdf',
+        'description_pdf' => 'pdf/Ficus_Lyrata-Detail.pdf',
     ],
     3 => [
         'scientific_name' => 'Aloe vera',
@@ -25,7 +25,7 @@ $plants = [
         'genus' => 'Aloe',
         'species' => 'A. vera',
         'photo' => 'images/plant_images/Asphodelaceae_Aloe_Vera.jpg',
-        'description_pdf' => 'pdf/aloe_vera_description.pdf',
+        'description_pdf' => 'pdf/Aloe_Vera-Detail.pdf',
     ],
     4 => [
         'scientific_name' => 'Monstera deliciosa',
@@ -34,7 +34,7 @@ $plants = [
         'genus' => 'Monstera',
         'species' => 'M. deliciosa',
         'photo' => 'images/plant_images/Araceae_Monsterra_Deliciosa.jpg',
-        'description_pdf' => 'pdf/monstera_description.pdf',
+        'description_pdf' => 'pdf/Monstera_Deliciosa-Detail.pdf',
     ],
     5 => [
         'scientific_name' => 'Lavandula angustifolia',
@@ -43,7 +43,7 @@ $plants = [
         'genus' => 'Lavandula',
         'species' => 'L. angustifolia',
         'photo' => 'images/plant_images/Lamiaceae_Lavandula_Angustifolia.jpg',
-        'description_pdf' => 'pdf/lavender_description.pdf',
+        'description_pdf' => 'pdf/Lavandula_Angustifolia-Detail.pdf',
     ],
 ];
 
@@ -65,7 +65,8 @@ $plant = $plants[$plant_id];
 <html lang="en" class="detail">
 <head>
     <title>Plant Biodiversity Portal | Plant Detail</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 
 <body>
@@ -74,7 +75,8 @@ $plant = $plants[$plant_id];
         <nav>
             <ul>            
                 <li><a href="index.php">Home</a></li>          
-                <li><a href="main_menu.php">Main Menu</a></li>             
+                <li><a href="main_menu.php">Main Menu</a></li>    
+                <li><a href="about.php">About</a></li>         
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>    

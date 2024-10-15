@@ -14,7 +14,8 @@ unset($_SESSION['post_data']);
 <html lang="en" class="registration">
 <head>
     <title>Plant Biodiversity Portal | Register</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 
 <body>

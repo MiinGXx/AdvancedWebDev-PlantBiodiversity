@@ -27,7 +27,7 @@ function getAllUsers($file) {
         }
     }
     
-    return $users;
+    return $users; // 
 }
 
 // Function to find the logged-in user by email
@@ -51,22 +51,36 @@ function emailExists($users, $newEmail, $currentEmail) {
 }
 
 // Function to update user information and save it back to the file
-function updateUserInfo($file, $updatedUser) {
-    $users = getAllUsers($file);
+function updateUserInfo($file, $updatedUser, $currentEmail) {
+    // Read all lines from the file
+    $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $updatedData = '';
 
-    foreach ($users as &$user) {
-        if ($user['Email'] === $updatedUser['Email']) {
-            $user = $updatedUser; // Update the user data
-            break;
+    foreach ($lines as $line) {
+        $fields = explode('|', $line);
+        $userEmail = '';
+
+        // Parse each field to find the email
+        foreach ($fields as $field) {
+            list($key, $value) = explode(':', $field);
+            if (trim($key) === 'Email') {
+                $userEmail = trim($value);
+                break;
+            }
         }
+
+        // Check if this line is the current user based on the email
+        if ($userEmail === $currentEmail) {
+            // Replace this line with the updated user information
+            $line = "First Name:{$updatedUser['First Name']}|Last Name:{$updatedUser['Last Name']}|DOB:{$updatedUser['DOB']}|Gender:{$updatedUser['Gender']}|Email:{$updatedUser['Email']}|Hometown:{$updatedUser['Hometown']}|Password:{$updatedUser['Password']}";
+        }
+
+        // Append the (possibly updated) line to the new data
+        $updatedData .= $line . "\n";
     }
 
-    // Write all users back to the file
-    $data = '';
-    foreach ($users as $user) {
-        $data .= "First Name:{$user['First Name']}|Last Name:{$user['Last Name']}|DOB:{$user['DOB']}|Gender:{$user['Gender']}|Email:{$user['Email']}|Hometown:{$user['Hometown']}|Password:{$user['Password']}\n";
-    }
-    file_put_contents($file, $data);
+    // Write the updated data back to the file
+    file_put_contents($file, $updatedData);
 }
 
 // Get all users from the file
@@ -113,7 +127,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // If no errors, save updated information to the file
             if (empty($errors)) {
-                updateUserInfo($userFile, $userInfo);
+                // Use the current email from the session for comparison
+                updateUserInfo($userFile, $userInfo, $loggedInEmail);
                 header('Location: main_menu.php');
                 exit;
             }
@@ -134,10 +149,9 @@ $profileImage = isset($userInfo['Gender']) && isset($defaultImages[$userInfo['Ge
 <!DOCTYPE html>
 <html lang="en" class="update-profile">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
     <title>Plant Biodiversity | Update Profile</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 <body>
     <main>

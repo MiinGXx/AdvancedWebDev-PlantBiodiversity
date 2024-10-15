@@ -14,7 +14,8 @@ if (!isset($_SESSION['user'])) {
 <html lang="en" class="menu">
 <head>
     <title>Plant Biodiversity Portal | Main Menu</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 
 <body>          
@@ -24,6 +25,7 @@ if (!isset($_SESSION['user'])) {
             <ul>            
                 <li><a href="index.php">Home</a></li>       
                 <li><a href="main_menu.php">Main Menu</a></li>                   
+                <li><a href="about.php">About</a></li>
                 <li><a href="logout.php">Logout</a></li> <!-- Consider creating a separate logout page -->
                 <li><a href="update_profile.php">View Profile</a></li>
             </ul>

@@ -33,7 +33,8 @@
 <html lang="en" class="contribute">
 <head>
     <title>Plant Biodiversity Portal | Contribute</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 
 <body>
@@ -42,7 +43,8 @@
         <nav>
             <ul>            
                 <li><a href="index.php">Home</a></li>          
-                <li><a href="main_menu.php">Main Menu</a></li>             
+                <li><a href="main_menu.php">Main Menu</a></li>    
+                <li><a href="about.php">About</a></li>         
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>    
