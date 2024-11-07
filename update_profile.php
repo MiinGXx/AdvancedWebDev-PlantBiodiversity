@@ -102,6 +102,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $update_user->close();
     }
 }
+
+// Determine the profile image to display based on gender or existing value in database
+$profileImage = $defaultImages[$userInfo['gender']] ?? 'images/profile_images/default.jpg';
+
 $conn->close();
 ?>
 

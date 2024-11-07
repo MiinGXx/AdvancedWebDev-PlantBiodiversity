@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $confirm_password = $_POST['confirm_password'];
 
     // Set default profile image based on gender
-    $profile_image = ($gender == "Male") ? "\images\profile_images\boys.jpg" : "\images\profile_images\girl.png";
+    $profile_image = ($gender == "Male") ? "/images/profile_images/girl.png" : "/images/profile_images/boys.jpg";
     $contact_number = "";
 
     // Validate first name

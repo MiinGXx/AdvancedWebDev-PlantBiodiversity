@@ -48,10 +48,10 @@ unset($_SESSION['post_data']);
                 <div>
                     <label>Gender:</label>
                     <div class="gender-group">
-                        <input type="radio" id="male" name="gender" value="male" <?php echo (isset($postData['gender']) && $postData['gender'] == 'male') ? 'checked' : ''; ?>>
+                        <input type="radio" id="male" name="gender" value="Male" <?php echo (isset($postData['gender']) && $postData['gender'] == 'Male') ? 'checked' : ''; ?>>
                         <label for="male">Male</label>
                         
-                        <input type="radio" id="female" name="gender" value="female" <?php echo (isset($postData['gender']) && $postData['gender'] == 'female') ? 'checked' : ''; ?>>
+                        <input type="radio" id="female" name="gender" value="Female" <?php echo (isset($postData['gender']) && $postData['gender'] == 'Female') ? 'checked' : ''; ?>>
                         <label for="female">Female</label>
                     </div>
                     <div class="error"><?php echo isset($errors['gender']) ? $errors['gender'] : ''; ?></div>
