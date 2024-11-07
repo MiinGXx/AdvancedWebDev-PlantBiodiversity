@@ -36,10 +36,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user = $result->fetch_assoc();
             // Verify password
             if (password_verify($postData['password'], $user['password'])) {
-                // Set session variables and redirect to main menu
+                // Set session variables
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['type'] = $user['type'];
-                header("Location: main_menu.php");
+                
+                // Redirect based on user type
+                if ($user['type'] == 'admin') {
+                    header("Location: main_menu_admin.php");
+                } else {
+                    header("Location: main_menu.php");
+                }
                 exit;
             } else {
                 $errors['login'] = "Incorrect password. Please try again.";

@@ -1097,3 +1097,422 @@ footer a:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+/* ============================================================================= */
+/* main_menu_admin.php CSS styling */
+/* Darker navigation bar styling for admin */
+/* Header Styles */
+.admin-main-menu header {
+    background-color: #003366; /* Darker shade of blue */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.admin-main-menu header h1 {
+    margin: 0;
+}
+
+/* Navigation Styles */
+.admin-main-menu nav ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.admin-main-menu nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.admin-main-menu nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px; /* Added padding for a larger clickable area */
+    border: 2px solid transparent; /* Initial transparent border */
+    border-radius: 5px; /* Rounded corners for the border */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+    background-color: #003366; /* Darker shade of blue for buttons */
+}
+
+.admin-main-menu nav ul li a:hover {
+    border-color: white; /* Change border color on hover */
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.2
+    ); /* Optional background change on hover */
+    text-decoration: none; /* Ensure no underline on hover */
+}
+
+.admin-main-menu .admin-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.admin-main-menu .admin-options .button {
+    background-color: #0059b3; /* Button color for admin */
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    margin: 15px 0;
+    text-align: center;
+    border-radius: 5px;
+    width: 200px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+.admin-main-menu .admin-options .button:hover {
+    background-color: #0066cc;
+}
+
+.admin-main-menu {
+    text-align: center;
+}
+
+.admin-main-menu p {
+    margin-bottom: 0;
+}
+
+/* ============================================================================= */
+/* manage_accounts.php CSS styling */
+.manage-accounts main {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px; /* Added padding to main container */
+    box-sizing: border-box;
+}
+
+.manage-accounts header {
+    background-color: #003366; /* Darker shade of blue */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.manage-accounts header h1 {
+    margin: 0;
+}
+
+/* Navigation Styles */
+.manage-accounts nav ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.manage-accounts nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.manage-accounts nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px; /* Added padding for a larger clickable area */
+    border: 2px solid transparent; /* Initial transparent border */
+    border-radius: 5px; /* Rounded corners for the border */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+    background-color: #003366; /* Darker shade of blue for buttons */
+}
+
+.manage-accounts nav ul li a:hover {
+    border-color: white; /* Change border color on hover */
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.2
+    ); /* Optional background change on hover */
+    text-decoration: none; /* Ensure no underline on hover */
+}
+
+.manage-accounts .heading {
+    text-align: center;
+}
+
+.manage-accounts .heading h2 {
+    margin-bottom: 0;
+}
+
+.manage-accounts .heading p {
+    margin: 0;
+}
+
+/* Container for Main Content */
+.manage-accounts .container {
+    width: 100%;
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Success and Error Messages */
+.manage-accounts .success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #d6e9c6;
+}
+
+.manage-accounts .error {
+    background-color: #f2dede;
+    color: #a94442;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ebccd1;
+}
+
+/* Table Styling */
+.manage-accounts table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    table-layout: auto; /* Ensures table resizes dynamically */
+}
+
+.manage-accounts table th,
+.manage-accounts table td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.manage-accounts table th {
+    background-color: #f2f2f2;
+}
+
+/* Button Styling */
+.manage-accounts .button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-right: 5px;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    background-color: #1e3a8a; /* Darker shade of blue */
+}
+
+.manage-accounts .button:hover {
+    background-color: #1c3a7a; /* Even darker shade of blue for hover effect */
+}
+
+.manage-accounts .button.edit {
+    background-color: #5bc0de;
+}
+
+.manage-accounts .button.edit:hover {
+    background-color: #31b0d5;
+}
+
+.manage-accounts .button.delete {
+    background-color: #d9534f;
+}
+
+.manage-accounts .button.delete:hover {
+    background-color: #c9302c;
+}
+
+/* Back to Admin Menu Button */
+.manage-accounts .container p .button {
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .manage-accounts .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .manage-accounts table th,
+    .manage-accounts table td {
+        padding: 5px;
+    }
+
+    .manage-accounts .button {
+        padding: 8px 10px;
+        margin-right: 3px;
+    }
+}
+
+/* ============================================================================= */
+/* manage_plants.php CSS styling */
+.manage-plants main {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px; /* Added padding to main container */
+    box-sizing: border-box;
+}
+
+.manage-plants header {
+    background-color: #003366; /* Darker shade of blue */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.manage-plants header h1 {
+    margin: 0;
+}
+
+/* Navigation Styles */
+.manage-plants nav ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.manage-plants nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.manage-plants nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px; /* Added padding for a larger clickable area */
+    border: 2px solid transparent; /* Initial transparent border */
+    border-radius: 5px; /* Rounded corners for the border */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+    background-color: #003366; /* Darker shade of blue for buttons */
+}
+
+.manage-plants nav ul li a:hover {
+    border-color: white; /* Change border color on hover */
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.2
+    ); /* Optional background change on hover */
+    text-decoration: none; /* Ensure no underline on hover */
+}
+
+.manage-plants .heading {
+    text-align: center;
+}
+
+.manage-plants .heading h2 {
+    margin-bottom: 0;
+}
+
+.manage-plants .heading p {
+    margin: 0;
+}
+
+.manage-plants .container {
+    width: 100%;
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Table Styling */
+.manage-plants .table-container {
+    display: flex;
+    justify-content: center;
+}
+
+.manage-plants table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    table-layout: auto; /* Ensures table resizes dynamically */
+}
+
+.manage-plants table th,
+.manage-plants table td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+.manage-plants table th {
+    background-color: #f2f2f2;
+}
+
+/* Styles for the status and actions */
+.status-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Common button styles */
+.status-actions a,
+.status-actions button {
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+/* Approve button styles */
+.status-actions .approve-button {
+    background-color: #1e3a8a; /* Darker shade of blue */
+}
+
+.status-actions .approve-button:hover {
+    background-color: #1c3a7a;
+}
+
+/* Reject button styles */
+.status-actions .reject-button {
+    background-color: #d9534f; /* Red */
+}
+
+.status-actions .reject-button:hover {
+    background-color: #c9302c;
+}
+
+/* Disabled button styles */
+.status-actions button[disabled] {
+    background-color: grey;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Button Styling */
+.manage-plants .button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-right: 5px;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    background-color: #1e3a8a; /* Darker shade of blue */
+}
+
+.manage-plants .button:hover {
+    background-color: #1c3a7a; /* Even darker shade of blue for hover effect */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 600px) {
+    .manage-plants table th,
+    .manage-plants table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
