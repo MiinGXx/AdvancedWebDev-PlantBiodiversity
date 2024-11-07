@@ -51,6 +51,7 @@ $result = $conn->query("SELECT id, Scientific_Name, Common_Name, Family, Genus, 
                 <li><a href="main_menu_admin.php">Main Menu</a></li>
                 <li><a href="manage_accounts.php">Manage Accounts</a></li>
                 <li><a href="manage_plants.php">Manage Plants</a></li>
+                <li><a href="about.php">About</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>    
