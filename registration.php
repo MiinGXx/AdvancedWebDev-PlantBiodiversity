@@ -85,7 +85,7 @@ unset($_SESSION['post_data']);
                     <label for="confirm_password">Confirm Password:</label>
                     <input type="password" id="confirm_password" name="confirm_password">
                     <div class="error"><?php echo isset($errors['confirm_password']) ? $errors['confirm_password'] : ''; ?></div>
-                    <div class="error"><?php echo isset($errors['confirm_password_validation']) ? $errors['confirm_password_validation'] : ''; ?></div>
+                    <div class="error"><?php echo isset($errors['password_match']) ? $errors['password_match'] : ''; ?></div>
                 </div>
             </div>
 
@@ -100,6 +100,13 @@ unset($_SESSION['post_data']);
             <?php if (isset($errors['email_used'])): ?>
             <div class="error-email">
                 <strong><?php echo $errors['email_used']; ?></strong>
+            </div>
+            <?php endif; ?>
+
+            <!-- Display first name and last name duplicate error at the bottom -->
+            <?php if (isset($errors['name_used'])): ?>
+            <div class="error-email">
+                <strong><?php echo $errors['name_used']; ?></strong>
             </div>
             <?php endif; ?>
         </form>
