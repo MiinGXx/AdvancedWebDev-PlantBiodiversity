@@ -1,10 +1,6 @@
 <?php
 require 'db_connection.php'; // Ensure this file contains the DB connection setup
 
-// Create database if it doesn't exist
-$conn->query("CREATE DATABASE IF NOT EXISTS $dbname");
-$conn->select_db($dbname);
-
 // Create tables
 $conn->query("CREATE TABLE IF NOT EXISTS user_table (
     email VARCHAR(50) NOT NULL PRIMARY KEY,

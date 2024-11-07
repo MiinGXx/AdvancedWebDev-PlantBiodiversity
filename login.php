@@ -2,39 +2,12 @@
 // Start the session
 session_start();
 
+// Include the database connection
+require 'db_connection.php';
+
 // Initialize variables for error messages
 $errors = [];
 $postData = [];
-
-// Function to read user credentials from a text file
-function readUsersFromFile($filename) {
-    $users = [];
-    
-    if (file_exists($filename)) {
-        // Open the file
-        $file = fopen($filename, "r");
-        
-        // Read each line and store as an associative array
-        while (($line = fgets($file)) !== false) {
-            // Split the line into individual pieces
-            $userData = [];
-            $fields = explode('|', trim($line));
-            
-            // Process each field
-            foreach ($fields as $field) {
-                list($key, $value) = explode(':', $field);
-                $userData[trim($key)] = trim($value);
-            }
-            
-            // Use the email as the key for authentication
-            $users[$userData['Email']] = $userData['Password'];
-        }
-
-        fclose($file);
-    }
-
-    return $users;
-}
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -50,18 +23,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors['password'] = "Password is required.";
     }
 
-    // Check credentials from the user.txt file
+    // If no input errors, proceed to check credentials
     if (empty($errors)) {
-        $users = readUsersFromFile('data/user.txt');
+        // Query to fetch user credentials
+        $stmt = $conn->prepare("SELECT email, password, type FROM account_table WHERE email = ?");
+        $stmt->bind_param("s", $postData['email']);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-        // Validate user credentials
-        if (!isset($users[$postData['email']]) || $users[$postData['email']] !== $postData['password']) {
-            $errors['login'] = "Incorrect email or password. Please try again.";
+        // Check if user exists
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+            // Verify password
+            if (password_verify($postData['password'], $user['password'])) {
+                // Set session variables and redirect to main menu
+                $_SESSION['email'] = $user['email'];
+                $_SESSION['type'] = $user['type'];
+                header("Location: main_menu.php");
+                exit;
+            } else {
+                $errors['login'] = "Incorrect password. Please try again.";
+            }
         } else {
-            // Successful login, redirect or set session
-            $_SESSION['user'] = $postData['email']; // Set session variable or perform redirect
-            header("Location: main_menu.php"); // Redirect to a dashboard page
-            exit();
+            $errors['login'] = "No account found with this email.";
         }
     }
 }

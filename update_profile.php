@@ -1,149 +1,108 @@
 <?php
-// Path to the text file containing user information
-$userFile = 'data/user.txt';
-
 // Start the session to access logged-in user information
 session_start();
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['email'])) {
     header('Location: login.php');
     exit;
 }
 
-// Function to get all users' information from the text file
-function getAllUsers($file) {
-    $users = [];
-    
-    if (file_exists($file)) {
-        $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        
-        foreach ($lines as $line) {
-            $fields = explode('|', $line);
-            $userInfo = [];
-            foreach ($fields as $field) {
-                list($key, $value) = explode(':', $field);
-                $userInfo[trim($key)] = trim($value);
-            }
-            $users[] = $userInfo; // Add the user information to the list
-        }
-    }
-    
-    return $users; // 
-}
+// Include the database connection
+require 'db_connection.php';
 
-// Function to find the logged-in user by email
-function findUserByEmail($users, $email) {
-    foreach ($users as $user) {
-        if ($user['Email'] === $email) {
-            return $user;
-        }
-    }
-    return null;
-}
-
-// Function to check if the email already exists
-function emailExists($users, $newEmail, $currentEmail) {
-    foreach ($users as $user) {
-        if ($user['Email'] === $newEmail && $user['Email'] !== $currentEmail) {
-            return true; // Email exists and is different from the current email
-        }
-    }
-    return false;
-}
-
-// Function to update user information and save it back to the file
-function updateUserInfo($file, $updatedUser, $currentEmail) {
-    // Read all lines from the file
-    $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    $updatedData = '';
-
-    foreach ($lines as $line) {
-        $fields = explode('|', $line);
-        $userEmail = '';
-
-        // Parse each field to find the email
-        foreach ($fields as $field) {
-            list($key, $value) = explode(':', $field);
-            if (trim($key) === 'Email') {
-                $userEmail = trim($value);
-                break;
-            }
-        }
-
-        // Check if this line is the current user based on the email
-        if ($userEmail === $currentEmail) {
-            // Replace this line with the updated user information
-            $line = "First Name:{$updatedUser['First Name']}|Last Name:{$updatedUser['Last Name']}|DOB:{$updatedUser['DOB']}|Gender:{$updatedUser['Gender']}|Email:{$updatedUser['Email']}|Hometown:{$updatedUser['Hometown']}|Password:{$updatedUser['Password']}";
-        }
-
-        // Append the (possibly updated) line to the new data
-        $updatedData .= $line . "\n";
-    }
-
-    // Write the updated data back to the file
-    file_put_contents($file, $updatedData);
-}
-
-// Get all users from the file
-$users = getAllUsers($userFile);
-
-// Get the logged-in user by their email
-$loggedInEmail = $_SESSION['user'];
-$userInfo = findUserByEmail($users, $loggedInEmail);
+// Fetch user information from the database
+$email = $_SESSION['email'];
+$query = $conn->prepare("SELECT * FROM user_table WHERE email = ?");
+$query->bind_param("s", $email);
+$query->execute();
+$result = $query->get_result();
+$userInfo = $result->fetch_assoc();
 
 // Default profile images based on gender
 $defaultImages = [
-    'male' => 'images/profile_images/boys.jpg',
-    'female' => 'images/profile_images/girl.png',
+    'Male' => 'images/profile_images/boys.jpg',
+    'Female' => 'images/profile_images/girl.png',
 ];
 
-// Handle form submission
+// Initialize an array to store any errors
 $errors = [];
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['update'])) {
-        // Validate and update user information from the form
-        if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST['dob']) && !empty($_POST['gender']) && !empty($_POST['email']) && !empty($_POST['hometown'])) {
-            $userInfo['First Name'] = $_POST['first_name'];
-            $userInfo['Last Name'] = $_POST['last_name'];
-            $userInfo['DOB'] = $_POST['dob'];
-            $userInfo['Gender'] = $_POST['gender'];
-            $newEmail = $_POST['email'];
-            $userInfo['Email'] = $newEmail;
-            $userInfo['Hometown'] = $_POST['hometown'];
 
-            // Check if the new email already exists
-            if (emailExists($users, $newEmail, $loggedInEmail)) {
-                $errors['email'] = 'The email address already exists. Please use a different email.';
-            }
+// Handle form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Update user information from the form
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $dob = $_POST['dob'];
+    $gender = $_POST['gender'];
+    $hometown = $_POST['hometown'];
+    $new_email = $_POST['email'];
+    
+    // Set profile image based on updated gender
+    $profile_image = $defaultImages[$gender];
 
-            // Check for old password
-            if (!empty($_POST['old_password']) && !empty($_POST['new_password'])) {
-                // Verify the old password
-                if ($_POST['old_password'] === $userInfo['Password']) {
-                    $userInfo['Password'] = $_POST['new_password'];
-                } else {
-                    $errors['old_password'] = 'Old password is incorrect.';
-                }
-            }
-
-            // If no errors, save updated information to the file
-            if (empty($errors)) {
-                // Use the current email from the session for comparison
-                updateUserInfo($userFile, $userInfo, $loggedInEmail);
-                header('Location: main_menu.php');
-                exit;
-            }
-        } else {
-            $errors['form'] = 'All fields are required except for password.';
+    // Validate email and check for duplicates if email has been changed
+    if ($new_email !== $email) {
+        $email_check = $conn->prepare("SELECT email FROM user_table WHERE email = ?");
+        $email_check->bind_param("s", $new_email);
+        $email_check->execute();
+        $email_check->store_result();
+        
+        if ($email_check->num_rows > 0) {
+            $errors['email'] = 'The email address is already in use. Please use a different email.';
         }
-    } elseif (isset($_POST['cancel'])) {
-        // Redirect to main menu
-        header('Location: main_menu.php');
-        exit;
+        $email_check->close();
+    }
+
+    // Handle password update
+    if (!empty($_POST['old_password']) && !empty($_POST['new_password'])) {
+        $old_password = $_POST['old_password'];
+        $new_password = $_POST['new_password'];
+
+        // Check old password
+        $account_query = $conn->prepare("SELECT password FROM account_table WHERE email = ?");
+        $account_query->bind_param("s", $email);
+        $account_query->execute();
+        $account_result = $account_query->get_result();
+        $account_data = $account_result->fetch_assoc();
+
+        if (!password_verify($old_password, $account_data['password'])) {
+            $errors['old_password'] = 'Old password is incorrect.';
+        } elseif (strlen($new_password) < 8 || !preg_match('/[0-9]/', $new_password) || !preg_match('/[\W_]/', $new_password)) {
+            $errors['new_password'] = 'Password must be at least 8 characters long and contain a number and a symbol.';
+        } else {
+            $hashed_new_password = password_hash($new_password, PASSWORD_BCRYPT);
+        }
+        $account_query->close();
+    }
+
+    // If there are no errors, proceed with the update
+    if (empty($errors)) {
+        // Update user_table, including profile image based on gender
+        $update_user = $conn->prepare("UPDATE user_table SET first_name = ?, last_name = ?, dob = ?, gender = ?, hometown = ?, email = ?, profile_image = ? WHERE email = ?");
+        $update_user->bind_param("ssssssss", $first_name, $last_name, $dob, $gender, $hometown, $new_email, $profile_image, $email);
+        
+        if ($update_user->execute()) {
+            // Update account_table if the password has been changed
+            if (!empty($hashed_new_password)) {
+                $update_account = $conn->prepare("UPDATE account_table SET password = ? WHERE email = ?");
+                $update_account->bind_param("ss", $hashed_new_password, $email);
+                $update_account->execute();
+                $update_account->close();
+            }
+
+            // Update session email if email was changed
+            if ($new_email !== $email) {
+                $_SESSION['email'] = $new_email;
+            }
+
+            header("Location: main_menu.php");
+            exit;
+        } else {
+            echo "Error updating profile. Please try again.";
+        }
+        $update_user->close();
     }
 }
-
-// Determine the profile image to display
-$profileImage = isset($userInfo['Gender']) && isset($defaultImages[$userInfo['Gender']]) ? $defaultImages[$userInfo['Gender']] : null;
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -154,86 +113,75 @@ $profileImage = isset($userInfo['Gender']) && isset($defaultImages[$userInfo['Ge
     <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 <body>
-    <main>
+    <main class="update-profile">
         <section>
             <h1>Update Profile</h1>
-            <?php if ($userInfo): ?>
-                <div class="profile-card">
-                    <?php if ($profileImage): ?>
-                        <img src="<?php echo $profileImage; ?>" alt="Profile Image">
-                    <?php endif; ?>
-                    <form method="post">
-                        <!-- First Name and Last Name -->
-                        <div class="form-group">
-                            <div>
-                                <label for="first_name">First Name:</label>
-                                <input type="text" id="first_name" name="first_name" size="25" value="<?php echo htmlspecialchars($userInfo['First Name']); ?>">
-                            </div>
-                            <div>
-                                <label for="last_name">Last Name:</label>
-                                <input type="text" id="last_name" name="last_name" size="25" value="<?php echo htmlspecialchars($userInfo['Last Name']); ?>">
+            <div class="profile-card">
+                <img src="<?php echo $profileImage; ?>" alt="Profile Image">
+                <form method="post">
+                    <!-- First Name and Last Name -->
+                    <div class="form-group">
+                        <div>
+                            <label for="first_name">First Name:</label>
+                            <input type="text" id="first_name" name="first_name" value="<?php echo htmlspecialchars($userInfo['first_name']); ?>">
+                        </div>
+                        <div>
+                            <label for="last_name">Last Name:</label>
+                            <input type="text" id="last_name" name="last_name" value="<?php echo htmlspecialchars($userInfo['last_name']); ?>">
+                        </div>
+                    </div>
+
+                    <!-- Date of Birth and Gender -->
+                    <div class="form-group">
+                        <div>
+                            <label for="dob">Date of Birth:</label>
+                            <input type="date" id="dob" name="dob" value="<?php echo htmlspecialchars($userInfo['dob']); ?>">
+                        </div>
+                        <div>
+                            <label>Gender:</label>
+                            <div class="gender-group">
+                                <input type="radio" id="male" name="gender" value="Male" <?php echo $userInfo['gender'] === 'Male' ? 'checked' : ''; ?>>
+                                <label for="male">Male</label>
+                                <input type="radio" id="female" name="gender" value="Female" <?php echo $userInfo['gender'] === 'Female' ? 'checked' : ''; ?>>
+                                <label for="female">Female</label>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Date of Birth and Gender -->
-                        <div class="form-group">
-                            <div>
-                                <label for="dob">Date of Birth:</label>
-                                <input type="date" id="dob" name="dob" value="<?php echo htmlspecialchars($userInfo['DOB']); ?>">
-                            </div>
-                            <div>
-                                <label>Gender:</label>
-                                <div class="gender-group">
-                                    <input type="radio" id="male" name="gender" value="male" <?php echo $userInfo['Gender'] === 'male' ? 'checked' : ''; ?>>
-                                    <label for="male">Male</label>
-                                    
-                                    <input type="radio" id="female" name="gender" value="female" <?php echo $userInfo['Gender'] === 'female' ? 'checked' : ''; ?>>
-                                    <label for="female">Female</label>
-                                </div>
-                            </div>
+                    <!-- Email and Hometown -->
+                    <div class="form-group">
+                        <div>
+                            <label for="email">Email:</label>
+                            <input type="text" id="email" name="email" value="<?php echo htmlspecialchars($userInfo['email']); ?>">
+                            <div class="error"><?php echo isset($errors['email']) ? $errors['email'] : ''; ?></div>
                         </div>
-
-                        <!-- Email and Hometown -->
-                        <div class="form-group">
-                            <div>
-                                <label for="email">Email:</label>
-                                <input type="text" id="email" name="email" value="<?php echo htmlspecialchars($userInfo['Email']); ?>">
-                                <div class="error"><?php echo isset($errors['email']) ? $errors['email'] : ''; ?></div>
-                            </div>
-                            <div>
-                                <label for="hometown">Hometown:</label>
-                                <input type="text" id="hometown" name="hometown" size="25" value="<?php echo htmlspecialchars($userInfo['Hometown']); ?>">
-                            </div>
+                        <div>
+                            <label for="hometown">Hometown:</label>
+                            <input type="text" id="hometown" name="hometown" value="<?php echo htmlspecialchars($userInfo['hometown']); ?>">
                         </div>
+                    </div>
 
-                        <!-- Old Password and New Password -->
-                        <div class="form-group">
-                            <div>
-                                <label for="old_password">Old Password:</label>
-                                <input type="password" id="old_password" name="old_password">
-                                <div class="error"><?php echo isset($errors['old_password']) ? $errors['old_password'] : ''; ?></div>
-                            </div>
-                            <div>
-                                <label for="new_password">New Password:</label>
-                                <input type="password" id="new_password" name="new_password">
-                            </div>
+                    <!-- Password Change -->
+                    <div class="form-group">
+                        <div>
+                            <label for="old_password">Old Password:</label>
+                            <input type="password" id="old_password" name="old_password">
+                            <div class="error"><?php echo isset($errors['old_password']) ? $errors['old_password'] : ''; ?></div>
                         </div>
-
-                        <!-- Display error messages -->
-                        <?php if (isset($errors['form'])): ?>
-                            <div class="error"><?php echo $errors['form']; ?></div>
-                        <?php endif; ?>
-
-                        <!-- Submit and Reset Buttons -->
-                        <div class="button-group">
-                            <button type="submit" name="update" class="submit-button">Update</button>
-                            <button type="submit" name="cancel" class="reset-button">Cancel</button>
+                        <div>
+                            <label for="new_password">New Password:</label>
+                            <input type="password" id="new_password" name="new_password">
+                            <div class="error"><?php echo isset($errors['new_password']) ? $errors['new_password'] : ''; ?></div>
                         </div>
-                    </form>
-                </div>
-            <?php else: ?>
-                <p>No user information found.</p>
-            <?php endif; ?>
+                    </div>
+
+                    <!-- Submit and Cancel Buttons -->
+                    <div class="button-group">
+                        <button type="submit" name="update" class="submit-button">Update</button>
+                        <button type="button" onclick="window.location.href='main_menu.php'" class="reset-button">Cancel</button>
+                    </div>
+                </form>
+            </div>
         </section>
     </main>
 </body>
