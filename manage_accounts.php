@@ -81,7 +81,7 @@ if (isset($_GET['delete'])) {
                         <td><?php echo htmlspecialchars($row['gender']); ?></td>
                         <td><?php echo htmlspecialchars($row['hometown']); ?></td>
                         <td>
-                            <a href="edit_user.php?email=<?php echo urlencode($row['email']); ?>" class="button edit">Edit</a>
+                            <a href="edit_account.php?email=<?php echo urlencode($row['email']); ?>" class="button edit">Edit</a>
                             <a href="manage_accounts.php?delete=<?php echo urlencode($row['email']); ?>" class="button delete" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
                         </td>
                     </tr>
@@ -89,7 +89,10 @@ if (isset($_GET['delete'])) {
             </tbody>
         </table>
 
-        <p><a href="main_menu_admin.php" class="button">Back to Admin Menu</a></p>
+        <div class="button-container">
+            <p><a href="main_menu_admin.php" class="button">Back to Admin Menu</a></p>
+            <p><a href="add_account.php" class="button">Add New User</a></p>   
+        </div>
     </main>
     <br><br><br>
 </body>
