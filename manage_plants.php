@@ -108,6 +108,7 @@ $result = $conn->query("SELECT id, Scientific_Name, Common_Name, Family, Genus, 
                                         echo '<a href="manage_plants.php?action=reject&id=' . $row['id'] . '" class="reject-button">Reject</a>';
                                     }
                                 ?>
+                                <a href="manage_plants.php?action=delete&id=<?php echo $row['id']; ?>" class="delete-button" onclick="return confirm('Are you sure you want to delete this plant entry?');">Delete</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>
@@ -115,7 +116,10 @@ $result = $conn->query("SELECT id, Scientific_Name, Common_Name, Family, Genus, 
             </table>
         </div>
 
-        <p><a href="main_menu_admin.php" class="button">Back to Admin Menu</a></p>
+        <div class="button-container">
+            <p><a href="main_menu_admin.php" class="button">Back to Admin Menu</a></p>
+            <p><a href="add_plant.php" class="button">Add New Plant</a></p>
+        </div>
     </main>
     <br><br><br>
 </body>

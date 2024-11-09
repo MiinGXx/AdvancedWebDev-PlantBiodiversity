@@ -58,91 +58,66 @@ if ($result->num_rows == 0) {
     $conn->query("INSERT INTO account_table (email, password, type) VALUES
         ('admin@swin.edu.my', '" . password_hash('admin', PASSWORD_BCRYPT) . "', 'admin')");
 }
+// Check if the plant_table is empty
+$result = $conn->query("SELECT COUNT(*) as count FROM plant_table");
+$row = $result->fetch_assoc();
 
-// Array of plant details
-$plants = [
-    1 => [
-        'scientific_name' => 'Endiandra sieberi',
-        'common_name' => 'Corkwood',
-        'family' => 'Lauraceae',
-        'genus' => 'Endiandra',
-        'species' => 'E. sieberi',
-        'photo' => 'images/plant_images/Lauraceae_Endiandra_Sieberi.jpg',
-        'description_pdf' => 'pdf/Endiandra_Sieberi-Detail.pdf',
-    ],
-    2 => [
-        'scientific_name' => 'Ficus lyrata',
-        'common_name' => 'Fiddle Leaf Fig',
-        'family' => 'Moraceae',
-        'genus' => 'Ficus',
-        'species' => 'F. lyrata',
-        'photo' => 'images/plant_images/Moraceae_Ficus_Lyrata.jpg',
-        'description_pdf' => 'pdf/Ficus_Lyrata-Detail.pdf',
-    ],
-    3 => [
-        'scientific_name' => 'Aloe vera',
-        'common_name' => 'Aloe Vera',
-        'family' => 'Asphodelaceae',
-        'genus' => 'Aloe',
-        'species' => 'A. vera',
-        'photo' => 'images/plant_images/Asphodelaceae_Aloe_Vera.jpg',
-        'description_pdf' => 'pdf/Aloe_Vera-Detail.pdf',
-    ],
-    4 => [
-        'scientific_name' => 'Monstera deliciosa',
-        'common_name' => 'Swiss Cheese Plant',
-        'family' => 'Araceae',
-        'genus' => 'Monstera',
-        'species' => 'M. deliciosa',
-        'photo' => 'images/plant_images/Araceae_Monsterra_Deliciosa.jpg',
-        'description_pdf' => 'pdf/Monstera_Deliciosa-Detail.pdf',
-    ],
-    5 => [
-        'scientific_name' => 'Lavandula angustifolia',
-        'common_name' => 'Lavender',
-        'family' => 'Lamiaceae',
-        'genus' => 'Lavandula',
-        'species' => 'L. angustifolia',
-        'photo' => 'images/plant_images/Lamiaceae_Lavandula_Angustifolia.jpg',
-        'description_pdf' => 'pdf/Lavandula_Angustifolia-Detail.pdf',
-    ],
-];
+if ($row['count'] == 0) {
+    // Array of plant details
+    $plants = [
+        1 => [
+            'scientific_name' => 'Endiandra sieberi',
+            'common_name' => 'Corkwood',
+            'family' => 'Lauraceae',
+            'genus' => 'Endiandra',
+            'species' => 'E. sieberi',
+            'photo' => 'images/plant_images/Lauraceae_Endiandra_Sieberi.jpg',
+            'description_pdf' => 'pdf/Endiandra_Sieberi-Detail.pdf',
+        ],
+        2 => [
+            'scientific_name' => 'Ficus lyrata',
+            'common_name' => 'Fiddle Leaf Fig',
+            'family' => 'Moraceae',
+            'genus' => 'Ficus',
+            'species' => 'F. lyrata',
+            'photo' => 'images/plant_images/Moraceae_Ficus_Lyrata.jpg',
+            'description_pdf' => 'pdf/Ficus_Lyrata-Detail.pdf',
+        ],
+        3 => [
+            'scientific_name' => 'Aloe vera',
+            'common_name' => 'Aloe Vera',
+            'family' => 'Asphodelaceae',
+            'genus' => 'Aloe',
+            'species' => 'A. vera',
+            'photo' => 'images/plant_images/Asphodelaceae_Aloe_Vera.jpg',
+            'description_pdf' => 'pdf/Aloe_Vera-Detail.pdf',
+        ],
+        4 => [
+            'scientific_name' => 'Monstera deliciosa',
+            'common_name' => 'Swiss Cheese Plant',
+            'family' => 'Araceae',
+            'genus' => 'Monstera',
+            'species' => 'M. deliciosa',
+            'photo' => 'images/plant_images/Araceae_Monsterra_Deliciosa.jpg',
+            'description_pdf' => 'pdf/Monstera_Deliciosa-Detail.pdf',
+        ],
+        5 => [
+            'scientific_name' => 'Lavandula angustifolia',
+            'common_name' => 'Lavender',
+            'family' => 'Lamiaceae',
+            'genus' => 'Lavandula',
+            'species' => 'L. angustifolia',
+            'photo' => 'images/plant_images/Lamiaceae_Lavandula_Angustifolia.jpg',
+            'description_pdf' => 'pdf/Lavandula_Angustifolia-Detail.pdf',
+        ],
+    ];
 
-// Check if each plant exists in the plant_table and insert if not
-foreach ($plants as $plant) {
-    $scientific_name = $plant['scientific_name'];
-    $common_name = $plant['common_name'];
-    $family = $plant['family'];
-    $genus = $plant['genus'];
-    $species = $plant['species'];
-    $photo = $plant['photo'];
-    $description_pdf = $plant['description_pdf'];
-
-    // Check if the plant exists in the database
-    $stmt = $conn->prepare("SELECT id FROM plant_table WHERE Scientific_Name = ?");
-    $stmt->bind_param("s", $scientific_name);
-    $stmt->execute();
-    $stmt->store_result();
-
-    if ($stmt->num_rows == 0) {
-        // Plant does not exist, insert it
+    // Insert plants into the plant_table
+    foreach ($plants as $plant) {
         $stmt = $conn->prepare("INSERT INTO plant_table (Scientific_Name, Common_Name, family, genus, species, plants_image, description) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssss", $scientific_name, $common_name, $family, $genus, $species, $photo, $description_pdf);
+        $stmt->bind_param("sssssss", $plant['scientific_name'], $plant['common_name'], $plant['family'], $plant['genus'], $plant['species'], $plant['photo'], $plant['description_pdf']);
         $stmt->execute();
+        $stmt->close();
     }
-
-    $stmt->close();
 }
-
-// Get plant ID from the URL (e.g., plant_detail.php?id=1)
-$plant_id = isset($_GET['id']) ? (int)$_GET['id'] : 1; // Default to plant ID 1 if not set
-
-// Check if the plant exists in the array
-if (!array_key_exists($plant_id, $plants)) {
-    echo "Plant not found!";
-    exit;
-}
-
-// Get the plant details
-$plant = $plants[$plant_id];
-?>  
+?>
