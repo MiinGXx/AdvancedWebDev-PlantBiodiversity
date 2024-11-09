@@ -1721,6 +1721,11 @@ footer a:hover {
     cursor: pointer;
 }
 
+/* Edit button styles */
+.status-actions .edit-button {
+    background-color: #5bc0de; /* Light blue */
+}
+
 /* Approve button styles */
 .status-actions .approve-button {
     background-color: #1e3a8a; /* Darker shade of blue */
@@ -1747,7 +1752,7 @@ footer a:hover {
 }
 
 .status-actions .delete-button {
-    background-color: #d9534f; /* Red */
+    background-color: #be0600; /* Red */
 }
 
 /* Button Styling */
@@ -1837,6 +1842,15 @@ footer a:hover {
     font-size: 0.9em;
 }
 
+.add-plant input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 0.9em;
+}
+
 .add-plant .error {
     color: #d9534f;
     font-size: 0.85em;
@@ -1899,4 +1913,101 @@ footer a:hover {
         margin-bottom: 10px;
         margin-right: 0;
     }
+}
+
+/* ============================================================================= */
+/* edit_plant.php CSS styling */
+.edit-plant main {
+    width: 90%;
+    max-width: 700px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.edit-plant h2 {
+    text-align: center;
+    color: #003366;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.edit-plant .form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.edit-plant .form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.edit-plant label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.edit-plant input[type="text"],
+.edit-plant input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 0.9em;
+}
+
+.edit-plant .current-image {
+    max-width: 300px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+.edit-plant select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.edit-plant .button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-plant .submit-button,
+.edit-plant .cancel-button {
+    flex: 1;
+    padding: 10px 15px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+
+.edit-plant .submit-button {
+    background-color: #1e3a8a;
+}
+
+.edit-plant .submit-button:hover {
+    background-color: #1c3a7a;
+}
+
+.edit-plant .cancel-button {
+    background-color: #d9534f;
+}
+
+.edit-plant .cancel-button:hover {
+    background-color: #c9302c;
 }

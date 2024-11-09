@@ -88,6 +88,7 @@ $result = $conn->query("SELECT id, Scientific_Name, Common_Name, Family, Genus, 
                             <td><img src="<?php echo htmlspecialchars($row['plants_image']); ?>" alt="Plant Image" width="50"></td>
                             <td><a href="<?php echo htmlspecialchars($row['description']); ?>" download>Download</a></td>
                             <td class="status-actions">
+                                <a href="edit_plant.php?id=<?php echo $row['id']; ?>" class="edit-button">Edit</a>
                                 <?php 
                                     $status = $row['status'];
             
