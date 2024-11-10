@@ -69,7 +69,7 @@ $result = $conn->query("SELECT id, Scientific_Name, Common_Name, Family, Genus, 
                     <tr>
                         <th>Scientific Name</th>
                         <th>Common Name</th>
-                        <th>Family</th>
+                        <th>Family</th> 
                         <th>Genus</th>
                         <th>Species</th>
                         <th>Description</th>
