@@ -1,128 +1,186 @@
 <?php
-// Start the session to access logged-in user information
 session_start();
 if (!isset($_SESSION['email'])) {
     header('Location: login.php');
     exit;
 }
 
-// Include the database connection
 require 'db_connection.php';
 
-// Fetch user information from the database
 $email = $_SESSION['email'];
+$errors = [];
+
+// Fetch user data
 $query = $conn->prepare("SELECT * FROM user_table WHERE email = ?");
 $query->bind_param("s", $email);
 $query->execute();
-$result = $query->get_result();
-$userInfo = $result->fetch_assoc();
+$userInfo = $query->get_result()->fetch_assoc();
+$query->close();
 
-// Default profile images based on gender
-$defaultImages = [
-    'Male' => 'images/profile_images/boys.jpg',
-    'Female' => 'images/profile_images/girl.png',
-];
+// Initialize profile image
+$profileImage = $userInfo['profile_image'];
 
-// Initialize an array to store any errors
-$errors = [];
-
-// Handle form submission
+// Process form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Update user information from the form
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $dob = $_POST['dob'];
     $gender = $_POST['gender'];
     $hometown = $_POST['hometown'];
     $new_email = $_POST['email'];
-    
-    // Set profile image based on updated gender
-    $profile_image = $defaultImages[$gender];
+    $profile_image = $userInfo['profile_image'];
 
-    // Validate email and check for duplicates if email has been changed
+    // Email validation for updates
     if ($new_email !== $email) {
         $email_check = $conn->prepare("SELECT email FROM user_table WHERE email = ?");
         $email_check->bind_param("s", $new_email);
         $email_check->execute();
-        $email_check->store_result();
-        
-        if ($email_check->num_rows > 0) {
-            $errors['email'] = 'The email address is already in use. Please use a different email.';
+        if ($email_check->get_result()->num_rows > 0) {
+            $errors['email'] = 'The email address is already in use.';
         }
         $email_check->close();
     }
 
-    // Handle password update
-    if (!empty($_POST['old_password']) && !empty($_POST['new_password'])) {
-        $old_password = $_POST['old_password'];
-        $new_password = $_POST['new_password'];
-
-        // Check old password
-        $account_query = $conn->prepare("SELECT password FROM account_table WHERE email = ?");
-        $account_query->bind_param("s", $email);
-        $account_query->execute();
-        $account_result = $account_query->get_result();
-        $account_data = $account_result->fetch_assoc();
-
-        if (!password_verify($old_password, $account_data['password'])) {
-            $errors['old_password'] = 'Old password is incorrect.';
-        } elseif (strlen($new_password) < 8 || !preg_match('/[0-9]/', $new_password) || !preg_match('/[\W_]/', $new_password)) {
-            $errors['new_password'] = 'Password must be at least 8 characters long and contain a number and a symbol.';
-        } else {
-            $hashed_new_password = password_hash($new_password, PASSWORD_BCRYPT);
+    // Handle reset to default profile image
+    if (isset($_POST['reset_profile_image']) && $_POST['reset_profile_image'] == 'yes') {
+        // Delete the current profile image if it's not the default one
+        if ($profile_image != "images/profile_images/boys.jpg" && $profile_image != "images/profile_images/girl.png" && file_exists($profile_image)) {
+            unlink($profile_image);
         }
-        $account_query->close();
+        $profile_image = ($gender == "Male") ? "images/profile_images/boys.jpg" : "images/profile_images/girl.png";
     }
 
-    // If there are no errors, proceed with the update
-    if (empty($errors)) {
-        // Update user_table, including profile image based on gender
-        $update_user = $conn->prepare("UPDATE user_table SET first_name = ?, last_name = ?, dob = ?, gender = ?, hometown = ?, email = ?, profile_image = ? WHERE email = ?");
-        $update_user->bind_param("ssssssss", $first_name, $last_name, $dob, $gender, $hometown, $new_email, $profile_image, $email);
-        
-        if ($update_user->execute()) {
-            // Update account_table if the password has been changed
-            if (!empty($hashed_new_password)) {
-                $update_account = $conn->prepare("UPDATE account_table SET password = ? WHERE email = ?");
-                $update_account->bind_param("ss", $hashed_new_password, $email);
-                $update_account->execute();
-                $update_account->close();
-            }
+    // Profile image upload handling
+    if (isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] == 0) {
+        $image_name = $_FILES['profile_image']['name'];
+        $image_tmp_name = $_FILES['profile_image']['tmp_name'];
+        $image_size = $_FILES['profile_image']['size'];
+        $image_ext = strtolower(pathinfo($image_name, PATHINFO_EXTENSION));
 
-            // Update session email if email was changed
-            if ($new_email !== $email) {
-                $_SESSION['email'] = $new_email;
-            }
-
-            header("Location: main_menu.php");
-            exit;
+        // Check if image size is bigger than 5MB
+        if ($image_size > 5 * 1024 * 1024) {
+            $errors['profile_image'] = "The profile image size should not exceed 5MB.";
         } else {
-            echo "Error updating profile. Please try again.";
+            if (in_array($image_ext, ['jpg', 'jpeg', 'png'])) {
+                $new_image_name = $first_name . "_" . $last_name . "_profile" . '.' . $image_ext;
+                $image_upload_path = 'images/profile_images/' . $new_image_name;
+
+                if ($profile_image == "images/profile_images/boys.jpg" || $profile_image == "images/profile_images/girl.png") {
+                    $profile_image = $image_upload_path;
+                } else {
+                    // Delete the old profile image if it's not the default one
+                    if (file_exists($profile_image)) {
+                        unlink($profile_image);
+                    }
+                    $profile_image = $image_upload_path;
+                }
+
+                // Upload the new image
+                if (move_uploaded_file($image_tmp_name, $image_upload_path)) {
+                    $profile_image = $image_upload_path;
+                } else {
+                    $errors['profile_image'] = "Failed to upload image.";
+                }
+            } else {
+                $errors['profile_image'] = "Invalid file type. Only JPG, JPEG, and PNG are allowed.";
+            }
         }
-        $update_user->close();
+    }
+
+    // Handle Resume upload
+    if (isset($_FILES['resume']) && $_FILES['resume']['error'] == 0) {
+        $resume_name = $_FILES['resume']['name'];
+        $resume_tmp_name = $_FILES['resume']['tmp_name'];
+        $resume_size = $_FILES['resume']['size'];
+        $resume_ext = strtolower(pathinfo($resume_name, PATHINFO_EXTENSION));
+    
+        // Check if resume size is bigger than 7MB
+        if ($resume_size > 7 * 1024 * 1024) {
+            $errors['resume'] = "The resume size should not exceed 7MB.";
+        } else {
+            if ($resume_ext == 'pdf') {
+                $new_resume_name = $first_name . "_" . $last_name . "_resume" . '.' . $resume_ext;
+                $resume_upload_path = 'resumes/' . $new_resume_name;
+    
+                // Check if the resumes folder exists, if not, create it
+                if (!is_dir('resumes')) {
+                    mkdir('resumes', 0777, true);
+                }
+    
+                // Upload the new resume
+                if (move_uploaded_file($resume_tmp_name, $resume_upload_path)) {
+                    $resume = $resume_upload_path;
+                } else {
+                    $errors['resume'] = "Failed to upload resume.";
+                }
+            } else {
+                $errors['resume'] = "Invalid file type. Only PDF files are allowed.";
+            }
+        }
+    }
+
+    // Handle Contact Number
+    $contact_number = $_POST['contact_number'];
+    if (!preg_match("/^[0-9]{10,11}$/", $contact_number)) {
+        $errors['contact_number'] = "Contact number must be a valid 10 or 11-digit number.";
+    }
+
+    // Handle password change
+    $old_password = $_POST['old_password'];
+    $new_password = $_POST['new_password'];
+
+    if (!empty($old_password) && !empty($new_password)) {
+        // Check if the new password meets the criteria
+        if (preg_match('/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $new_password)) {
+            $password_check = $conn->prepare("SELECT password FROM account_table WHERE email = ?");
+            $password_check->bind_param("s", $email);
+            $password_check->execute();
+            $password_hash = $password_check->get_result()->fetch_assoc()['password'];
+            $password_check->close();
+    
+            if (password_verify($old_password, $password_hash)) {
+                $new_password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+                $stmt = $conn->prepare("UPDATE account_table SET password = ? WHERE email = ?");
+                $stmt->bind_param("ss", $new_password_hash, $email);
+                $stmt->execute();
+                $stmt->close();
+            } else {
+                $errors['old_password'] = "Incorrect old password.";
+            }
+        } else {
+            $errors['new_password'] = "New password must be at least 8 characters long and include alphabets, numbers, and special characters.";
+        }
+    }
+
+    // Update user data in the database
+    if (empty($errors)) {
+        $stmt = $conn->prepare("UPDATE user_table SET first_name = ?, last_name = ?, dob = ?, gender = ?, hometown = ?, email = ?, profile_image = ?, contact_number = ? WHERE email = ?");
+        $stmt->bind_param("sssssssss", $first_name, $last_name, $dob, $gender, $hometown, $new_email, $profile_image, $contact_number, $email);
+        if ($stmt->execute()) {
+            $_SESSION['success_message'] = "Profile updated successfully.";
+            $_SESSION['email'] = $new_email;
+            header('Location: main_menu.php');
+        } else {
+            $errors['database'] = "Failed to update profile. Please try again later.";
+        }
+        $stmt->close();
     }
 }
-
-// Determine the profile image to display based on gender or existing value in database
-$profileImage = $defaultImages[$userInfo['gender']] ?? 'images/profile_images/default.jpg';
-
-$conn->close();
 ?>
 
 <!DOCTYPE html>
 <html lang="en" class="update-profile">
 <head>
-    <title>Plant Biodiversity | Update Profile</title>
-    <meta charset="UTF-8">
+    <title>Update Profile</title>
     <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 <body>
-    <main class="update-profile">
+<main class="update-profile">
         <section>
             <h1>Update Profile</h1>
             <div class="profile-card">
-                <img src="<?php echo $profileImage; ?>" alt="Profile Image">
-                <form method="post">
+                <img src="<?php echo htmlspecialchars($profileImage); ?>" alt="Profile Image">
+                <form method="post" enctype="multipart/form-data">
                     <!-- First Name and Last Name -->
                     <div class="form-group">
                         <div>
@@ -141,7 +199,7 @@ $conn->close();
                             <label for="dob">Date of Birth:</label>
                             <input type="date" id="dob" name="dob" value="<?php echo htmlspecialchars($userInfo['dob']); ?>">
                         </div>
-                        <div>
+                        <div>   
                             <label>Gender:</label>
                             <div class="gender-group">
                                 <input type="radio" id="male" name="gender" value="Male" <?php echo $userInfo['gender'] === 'Male' ? 'checked' : ''; ?>>
@@ -165,6 +223,34 @@ $conn->close();
                         </div>
                     </div>
 
+                    <!-- Profile Image and Resume -->
+                    <div class="form-group">
+                        <div>
+                            <label for="profile_image">Profile Image (< 5Mb):</label>
+                            <input type="file" id="profile_image" name="profile_image">
+                            <div class="error"><?php echo isset($errors['profile_image']) ? $errors['profile_image'] : ''; ?></div>
+                            <div>
+                                <input type="checkbox" id="reset_profile_image" name="reset_profile_image" value="yes">
+                                <label for="reset_profile_image">Reset Profile Image</label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="resume">Resume (PDF) (< 7Mb):</label>
+                            <input type="file" id="resume" name="resume" accept=".pdf">
+                            <div class="error"><?php echo isset($errors['resume']) ? $errors['resume'] : ''; ?></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            <label for="contact_number">Contact Number:</label>
+                            <input type="text" id="contact_number" name="contact_number" value="<?php echo htmlspecialchars($userInfo['contact_number']); ?>">
+                            <div class="error"><?php echo isset($errors['contact_number']) ? $errors['contact_number'] : ''; ?></div>
+                        </div>
+                    </div>
+
+                    <br>
                     <!-- Password Change -->
                     <div class="form-group">
                         <div>
