@@ -1142,62 +1142,130 @@ textarea {
 
 /* ============================================================================= */
 /* identify.php CSS styling */
-.identify {
-    height: 100%;
-}
-
-.identify main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f8f9fa;
-}
-
-/* Styles for the section */
 .identify section {
+    text-align: center; /* Center align sections */
+    justify-content: center; /* Center align sections */
+    margin-bottom: 40px; /* Space below sections */
+}
+
+.identify section .plant-identification,
+.identify section .plant-info {
+    display: flex; /* Flexbox for plant identification and information */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align items */
+    gap: 20px; /* Space between items */
+}
+
+.identify h3 {
     text-align: center;
-    background-color: #ffffff;
+    margin: 20px;
+    color: #4caf50; /* Green color for subheadings */
+}
+
+/* Form Container */
+.plant-identification {
+    max-width: 400px;
+    margin: 0 auto;
     padding: 20px;
+    background-color: #f9f9f9;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Styles for the heading */
-.identify section h1 {
-    color: #4caf50;
-    margin-bottom: 16px;
+/* Form Elements */
+.identify .plant-identification form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-/* Styles for the paragraph */
-.identify section p {
-    color: #6c757d;
-    margin-bottom: 12px;
+.identify .plant-identification label {
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
-/* Styles for the link */
-.identify section a {
-    display: inline-block;
+.identify .plant-identification input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.identify .plant-identification button {
     padding: 10px 20px;
-    background-color: #4caf50; /* Green button background */
+    background-color: #4caf50;
     color: white;
     border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 1em;
-    font-weight: bold;
+    border-radius: 4px;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 1em;
 }
 
-.identify section a:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.identify .plant-identification button:hover {
+    background-color: #45a049;
+}
+
+.identify .plant-info {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.identify .plant-info ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.identify .plant-info li {
+    margin-bottom: 10px;
+}
+
+.identify .plant-info p {
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+
+.identify .plant-info img {
+    width: 100%; /* Responsive images */
+    max-width: 350px; /* Limit maximum width */
+    border-radius: 5px; /* Rounded corners for images */
+}
+
+.identify .plant-info a {
+    color: black; /* Green color for links */
+    text-decoration: none; /* Remove underline from links */
+}
+
+.identify .plant-info a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+.identify .plant-info strong {
+    display: block;
+    font-weight: bold;
+    color: #388e3c; /* Darker green for emphasis */
+    margin-bottom: 2px;
+}
+
+.identify .success {
+    color: #3c763d; /* Dark green text */
+    padding: 10px; /* Padding for success message */
+    margin-bottom: 20px; /* Space below success message */
+    font-weight: bold; /* Bold text for success message */
+}
+
+.identify .error {
+    color: #a94442; /* Dark red text */
+    padding: 10px; /* Padding for error message */
+    margin-bottom: 20px; /* Space below error message */
+    font-weight: bold; /* Bold text for error message */
 }
 
 /* ============================================================================= */
 /* main_menu_admin.php CSS styling */
-/* Darker navigation bar styling for admin */
 /* Header Styles */
 .admin-main-menu header {
     background-color: #003366; /* Darker shade of blue */
