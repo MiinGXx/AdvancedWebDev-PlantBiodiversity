@@ -115,7 +115,7 @@ if ($row['count'] == 0) {
 
     // Insert plants into the plant_table
     foreach ($plants as $plant) {
-        $stmt = $conn->prepare("INSERT INTO plant_table (Scientific_Name, Common_Name, family, genus, species, plants_image, description) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO plant_table (Scientific_Name, Common_Name, family, genus, species, plants_image, description, status) VALUES (?, ?, ?, ?, ?, ?, ?, 'approved')");
         $stmt->bind_param("sssssss", $plant['scientific_name'], $plant['common_name'], $plant['family'], $plant['genus'], $plant['species'], $plant['photo'], $plant['description_pdf']);
         $stmt->execute();
         $stmt->close();

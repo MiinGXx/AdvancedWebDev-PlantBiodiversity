@@ -16,6 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $conn->query("UPDATE user_table SET resume = NULL WHERE email = '$email'");
     echo "<script>alert('Resume deleted successfully.');</script>";
+    $resumePath = $conn->query("SELECT resume FROM user_table WHERE email = '$email'")->fetch_assoc()['resume'];
+    if (file_exists($resumePath)) {
+        unlink($resumePath);
+    }
     header("Location: view_resumes.php");
     exit;
 }
