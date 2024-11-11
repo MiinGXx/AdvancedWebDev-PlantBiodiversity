@@ -1,65 +1,24 @@
 <?php
-$plants = [
-    1 => [
-        'scientific_name' => 'Endiandra sieberi',
-        'common_name' => 'Corkwood',
-        'family' => 'Lauraceae',
-        'genus' => 'Endiandra',
-        'species' => 'E. sieberi',
-        'photo' => 'images/plant_images/Lauraceae_Endiandra_Sieberi.jpg',
-        'description_pdf' => 'pdf/Endiandra_Sieberi-Detail.pdf',
-    ],
-    2 => [
-        'scientific_name' => 'Ficus lyrata',
-        'common_name' => 'Fiddle Leaf Fig',
-        'family' => 'Moraceae',
-        'genus' => 'Ficus',
-        'species' => 'F. lyrata',
-        'photo' => 'images/plant_images/Moraceae_Ficus_Lyrata.jpg',
-        'description_pdf' => 'pdf/Ficus_Lyrata-Detail.pdf',
-    ],
-    3 => [
-        'scientific_name' => 'Aloe vera',
-        'common_name' => 'Aloe Vera',
-        'family' => 'Asphodelaceae',
-        'genus' => 'Aloe',
-        'species' => 'A. vera',
-        'photo' => 'images/plant_images/Asphodelaceae_Aloe_Vera.jpg',
-        'description_pdf' => 'pdf/Aloe_Vera-Detail.pdf',
-    ],
-    4 => [
-        'scientific_name' => 'Monstera deliciosa',
-        'common_name' => 'Swiss Cheese Plant',
-        'family' => 'Araceae',
-        'genus' => 'Monstera',
-        'species' => 'M. deliciosa',
-        'photo' => 'images/plant_images/Araceae_Monsterra_Deliciosa.jpg',
-        'description_pdf' => 'pdf/Monstera_Deliciosa-Detail.pdf',
-    ],
-    5 => [
-        'scientific_name' => 'Lavandula angustifolia',
-        'common_name' => 'Lavender',
-        'family' => 'Lamiaceae',
-        'genus' => 'Lavandula',
-        'species' => 'L. angustifolia',
-        'photo' => 'images/plant_images/Lamiaceae_Lavandula_Angustifolia.jpg',
-        'description_pdf' => 'pdf/Lavandula_Angustifolia-Detail.pdf',
-    ],
-];
+require 'db_connection.php';
 
 // Get plant ID from the URL (e.g., plant_detail.php?id=1)
 $plant_id = isset($_GET['id']) ? (int)$_GET['id'] : 1; // Default to plant ID 1 if not set
 
-// Check if the plant exists in the array
-if (!array_key_exists($plant_id, $plants)) {
+// Fetch plant details from the database
+$stmt = $conn->prepare("SELECT * FROM plant_table WHERE id = ?");
+$stmt->bind_param("i", $plant_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$plant = $result->fetch_assoc();
+
+if (!$plant) {
     echo "Plant not found!";
     exit;
 }
 
-// Get the plant details
-$plant = $plants[$plant_id];
+$stmt->close();
+$conn->close();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en" class="detail">
@@ -84,20 +43,20 @@ $plant = $plants[$plant_id];
 
     <main>
         <section class="hero">
-            <h2>Plant Detail: <?php echo $plant['scientific_name']; ?></h2>
+            <h2>Plant Detail: <?php echo htmlspecialchars($plant['Scientific_Name']); ?></h2>
             <p>View detailed information about the plant species.</p>
         </section>
 
         <br><br><br>
 
         <section class="plant-info">
-            <img src="<?php echo $plant['photo']; ?>" alt="Herbarium Specimen Photo">
-            <h2><?php echo $plant['scientific_name']; ?></h2>
-            <p><strong>Common Name:</strong> <?php echo $plant['common_name']; ?></p>
-            <p><strong>Family:</strong> <?php echo $plant['family']; ?></p>
-            <p><strong>Genus:</strong> <?php echo $plant['genus']; ?></p>
-            <p><strong>Species:</strong> <?php echo $plant['species']; ?></p>
-            <p><strong>Description:</strong> <a href="<?php echo $plant['description_pdf']; ?>" download>Download PDF</a></p>
+            <img src="<?php echo htmlspecialchars($plant['plants_image']); ?>" alt="Herbarium Specimen Photo">
+            <h2><?php echo htmlspecialchars($plant['Scientific_Name']); ?></h2>
+            <p><strong>Common Name:</strong> <?php echo htmlspecialchars($plant['Common_Name']); ?></p>
+            <p><strong>Family:</strong> <?php echo htmlspecialchars($plant['family']); ?></p>
+            <p><strong>Genus:</strong> <?php echo htmlspecialchars($plant['genus']); ?></p>
+            <p><strong>Species:</strong> <?php echo htmlspecialchars($plant['species']); ?></p>
+            <p><strong>Description:</strong> <a href="<?php echo htmlspecialchars($plant['description']); ?>" download>Download PDF</a></p>
         </section>
 
         <section class="back-to-list">
@@ -106,7 +65,7 @@ $plant = $plants[$plant_id];
     </main>
 
     <footer>
-        <p>&copy; 2024 Plant Biodiversity | <a href="profile.php">Isaac Ng Ming Hong</a></p></p>
+        <p>&copy; 2024 Plant Biodiversity | <a href="profile.php">Isaac Ng Ming Hong</a></p>
     </footer>
 </body>
 </html>
