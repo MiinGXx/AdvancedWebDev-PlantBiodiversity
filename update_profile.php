@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hometown = $_POST['hometown'];
     $new_email = $_POST['email'];
     $profile_image = $userInfo['profile_image'];
+    $resume = $userInfo['resume'];
 
     // Email validation for updates
     if ($new_email !== $email) {
@@ -93,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $resume_tmp_name = $_FILES['resume']['tmp_name'];
         $resume_size = $_FILES['resume']['size'];
         $resume_ext = strtolower(pathinfo($resume_name, PATHINFO_EXTENSION));
-    
+
         // Check if resume size is bigger than 7MB
         if ($resume_size > 7 * 1024 * 1024) {
             $errors['resume'] = "The resume size should not exceed 7MB.";
@@ -101,15 +102,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($resume_ext == 'pdf') {
                 $new_resume_name = $first_name . "_" . $last_name . "_resume" . '.' . $resume_ext;
                 $resume_upload_path = 'resumes/' . $new_resume_name;
-    
+
                 // Check if the resumes folder exists, if not, create it
                 if (!is_dir('resumes')) {
                     mkdir('resumes', 0777, true);
                 }
-    
+
+                // Check if the user already has a resume
+                $stmt = $conn->prepare("SELECT resume FROM user_table WHERE email = ?");
+                $stmt->bind_param("s", $email);
+                $stmt->execute();
+                $stmt->bind_result($existing_resume);
+                $stmt->fetch();
+                $stmt->close();
+
+                // If a resume exists, delete the old resume file
+                if ($existing_resume && file_exists($existing_resume)) {
+                    unlink($existing_resume);
+                }
+
                 // Upload the new resume
                 if (move_uploaded_file($resume_tmp_name, $resume_upload_path)) {
                     $resume = $resume_upload_path;
+                    $stmt = $conn->prepare("UPDATE user_table SET resume = ? WHERE email = ?");
+                    $stmt->bind_param("ss", $resume, $email);
+                    $stmt->execute();
+                    $stmt->close();
                 } else {
                     $errors['resume'] = "Failed to upload resume.";
                 }

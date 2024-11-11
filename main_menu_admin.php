@@ -38,6 +38,7 @@ if ($_SESSION['type'] != 'admin') {
         <div class="admin-options">
             <a href="manage_accounts.php" class="button">Manage Accounts</a>
             <a href="manage_plants.php" class="button">Manage Plants</a>
+            <a href="view_resumes.php" class="button">View Resumes</a>
         </div>
     </main>
     <br><br><br>

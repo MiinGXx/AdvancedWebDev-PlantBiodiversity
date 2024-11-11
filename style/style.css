@@ -2018,3 +2018,133 @@ footer a:hover {
 .edit-plant .cancel-button:hover {
     background-color: #c9302c;
 }
+
+/* ============================================================================= */
+/* view_resumes.php CSS styling */
+.view-resumes main {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px; /* Added padding to main container */
+    box-sizing: border-box;
+}
+
+.view-resumes header {
+    background-color: #003366; /* Darker shade of blue */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.view-resumes header h1 {
+    margin: 0;
+}
+
+/* Navigation Styles */
+.view-resumes nav ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.view-resumes nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.view-resumes nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px; /* Added padding for a larger clickable area */
+    border: 2px solid transparent; /* Initial transparent border */
+    border-radius: 5px; /* Rounded corners for the border */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+    background-color: #003366; /* Darker shade of blue for buttons */
+}
+
+.view-resumes nav ul li a:hover {
+    border-color: white; /* Change border color on hover */
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.2
+    ); /* Optional background change on hover */
+    text-decoration: none; /* Ensure no underline on hover */
+}
+
+.view-resumes .heading {
+    text-align: center;
+}
+
+.view-resumes .heading h2 {
+    margin-bottom: 0;
+}
+
+.view-resumes .heading p {
+    margin: 0;
+}
+
+.view-resumes .container {
+    width: 100%;
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Table Styling */
+.view-resumes .table-container {
+    display: flex;
+    justify-content: center;
+}
+
+.view-resumes table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    table-layout: auto; /* Ensures table resizes dynamically */
+}
+
+.view-resumes table th,
+.view-resumes table td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+.view-resumes table th {
+    background-color: #f2f2f2;
+}
+
+/* Button Styling */
+.view-resumes .button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-right: 5px;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    background-color: #1e3a8a; /* Darker shade of blue */
+}
+
+.view-resumes .button:hover {
+    background-color: #1c3a7a; /* Even darker shade of blue for hover effect */
+}
+
+.view-resumes .button-container {
+    display: flex;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 600px) {
+    .view-resumes table th,
+    .view-resumes table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

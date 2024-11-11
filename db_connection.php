@@ -26,7 +26,8 @@ $conn->query("CREATE TABLE IF NOT EXISTS user_table (
     gender VARCHAR(6) NOT NULL,
     contact_number VARCHAR(15) NULL,
     hometown VARCHAR(50) NOT NULL,
-    profile_image VARCHAR(100) NULL
+    profile_image VARCHAR(100) NULL,
+    resume VARCHAR(100) NULL
 )");
 
 $conn->query("CREATE TABLE IF NOT EXISTS account_table (
