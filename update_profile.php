@@ -27,28 +27,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dob = $_POST['dob'];
     $gender = $_POST['gender'];
     $hometown = $_POST['hometown'];
-    $new_email = $_POST['email'];
     $profile_image = $userInfo['profile_image'];
     $resume = $userInfo['resume'];
 
-    // Email validation for updates
-    if ($new_email !== $email) {
-        $email_check = $conn->prepare("SELECT email FROM user_table WHERE email = ?");
-        $email_check->bind_param("s", $new_email);
-        $email_check->execute();
-        if ($email_check->get_result()->num_rows > 0) {
-            $errors['email'] = 'The email address is already in use.';
-        }
-        $email_check->close();
-    }
 
     // Handle reset to default profile image
     if (isset($_POST['reset_profile_image']) && $_POST['reset_profile_image'] == 'yes') {
         // Delete the current profile image if it's not the default one
-        if ($profile_image != "images/profile_images/boys.jpg" && $profile_image != "images/profile_images/girl.png" && file_exists($profile_image)) {
+        if ($profile_image != "profile_images/boys.jpg" && $profile_image != "profile_images/girl.png" && file_exists($profile_image)) {
             unlink($profile_image);
         }
-        $profile_image = ($gender == "Male") ? "images/profile_images/boys.jpg" : "images/profile_images/girl.png";
+        $profile_image = ($gender == "Male") ? "profile_images/boys.jpg" : "profile_images/girl.png";
     }
 
     // Profile image upload handling
@@ -64,9 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             if (in_array($image_ext, ['jpg', 'jpeg', 'png'])) {
                 $new_image_name = $first_name . "_" . $last_name . "_profile" . '.' . $image_ext;
-                $image_upload_path = 'images/profile_images/' . $new_image_name;
+                $image_upload_path = 'profile_images/' . $new_image_name;
 
-                if ($profile_image == "images/profile_images/boys.jpg" || $profile_image == "images/profile_images/girl.png") {
+                if ($profile_image == "profile_images/boys.jpg" || $profile_image == "profile_images/girl.png") {
                     $profile_image = $image_upload_path;
                 } else {
                     // Delete the old profile image if it's not the default one
@@ -172,11 +161,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Update user data in the database
     if (empty($errors)) {
-        $stmt = $conn->prepare("UPDATE user_table SET first_name = ?, last_name = ?, dob = ?, gender = ?, hometown = ?, email = ?, profile_image = ?, contact_number = ? WHERE email = ?");
-        $stmt->bind_param("sssssssss", $first_name, $last_name, $dob, $gender, $hometown, $new_email, $profile_image, $contact_number, $email);
+        $stmt = $conn->prepare("UPDATE user_table SET first_name = ?, last_name = ?, dob = ?, gender = ?, hometown = ?, profile_image = ?, contact_number = ? WHERE email = ?");
+        $stmt->bind_param("ssssssss", $first_name, $last_name, $dob, $gender, $hometown, $profile_image, $contact_number, $email);
         if ($stmt->execute()) {
             $_SESSION['success_message'] = "Profile updated successfully.";
-            $_SESSION['email'] = $new_email;
             header('Location: main_menu.php');
         } else {
             $errors['database'] = "Failed to update profile. Please try again later.";
@@ -190,7 +178,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en" class="update-profile">
 <head>
     <title>Update Profile</title>
-    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 <main class="update-profile">
@@ -232,7 +220,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="form-group">
                         <div>
                             <label for="email">Email:</label>
-                            <input type="text" id="email" name="email" value="<?php echo htmlspecialchars($userInfo['email']); ?>">
+                            <input type="text" id="email" name="email" value="<?php echo htmlspecialchars($userInfo['email']); ?>" disabled>
                             <div class="error"><?php echo isset($errors['email']) ? $errors['email'] : ''; ?></div>
                         </div>
                         <div>

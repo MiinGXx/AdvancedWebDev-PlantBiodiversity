@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "plantbiodiversity";
+$dbname = "PlantBiodiversity";
 
 // Create a new connection
 $conn = new mysqli($servername, $username, $password);
@@ -59,6 +59,54 @@ if ($result->num_rows == 0) {
     $conn->query("INSERT INTO account_table (email, password, type) VALUES
         ('admin@swin.edu.my', '" . password_hash('admin', PASSWORD_BCRYPT) . "', 'admin')");
 }
+
+// Insert additional dummy user data
+$users = [
+    [
+        'email' => 'john@gmail.com',
+        'first_name' => 'John',
+        'last_name' => 'Doe',
+        'gender' => 'Male',
+        'profile_image' => 'profile_images/boys.jpg',
+        'hometown' => 'Townsville'
+    ],
+    [
+        'email' => 'jane@gmail.com',
+        'first_name' => 'Jane',
+        'last_name' => 'Smith',
+        'gender' => 'Female',
+        'profile_image' => 'profile_images/girl.png',
+        'hometown' => 'Springfield'
+    ],
+    [
+        'email' => 'alice@gmail.com',
+        'first_name' => 'Alice',
+        'last_name' => 'Johnson',
+        'gender' => 'Female',
+        'profile_image' => 'profile_images/girl.png',
+        'hometown' => 'Riverdale'
+    ],
+    [
+        'email' => 'bob@gmail.com',
+        'first_name' => 'Bob',
+        'last_name' => 'Brown',
+        'gender' => 'Male',
+        'profile_image' => 'profile_images/boys.jpg',
+        'hometown' => 'Metropolis'
+    ]
+];
+
+// Check if there are any normal users in the user_table
+$result = $conn->query("SELECT email FROM account_table WHERE type = 'user'");
+if ($result->num_rows == 0) {
+    foreach ($users as $user) {
+        $conn->query("INSERT INTO user_table (email, first_name, last_name, gender, hometown, profile_image) VALUES
+            ('{$user['email']}', '{$user['first_name']}', '{$user['last_name']}', '{$user['gender']}', '{$user['hometown']}', '{$user['profile_image']}')");
+        $conn->query("INSERT INTO account_table (email, password, type) VALUES
+            ('{$user['email']}', '" . password_hash('password123!', PASSWORD_BCRYPT) . "', 'user')");
+    }
+}
+
 // Check if the plant_table is empty
 $result = $conn->query("SELECT COUNT(*) as count FROM plant_table");
 $row = $result->fetch_assoc();
@@ -73,7 +121,7 @@ if ($row['count'] == 0) {
             'genus' => 'Endiandra',
             'species' => 'E. sieberi',
             'photo' => 'images/plant_images/Lauraceae_Endiandra_Sieberi.jpg',
-            'description_pdf' => 'pdf/Endiandra_Sieberi-Detail.pdf',
+            'description_pdf' => 'plants_description/Endiandra_Sieberi-Detail.pdf',
         ],
         2 => [
             'scientific_name' => 'Ficus lyrata',
@@ -82,7 +130,7 @@ if ($row['count'] == 0) {
             'genus' => 'Ficus',
             'species' => 'F. lyrata',
             'photo' => 'images/plant_images/Moraceae_Ficus_Lyrata.jpg',
-            'description_pdf' => 'pdf/Ficus_Lyrata-Detail.pdf',
+            'description_pdf' => 'plants_description/Ficus_Lyrata-Detail.pdf',
         ],
         3 => [
             'scientific_name' => 'Aloe vera',
@@ -91,7 +139,7 @@ if ($row['count'] == 0) {
             'genus' => 'Aloe',
             'species' => 'A. vera',
             'photo' => 'images/plant_images/Asphodelaceae_Aloe_Vera.jpg',
-            'description_pdf' => 'pdf/Aloe_Vera-Detail.pdf',
+            'description_pdf' => 'plants_description/Aloe_Vera-Detail.pdf',
         ],
         4 => [
             'scientific_name' => 'Monstera deliciosa',
@@ -100,7 +148,7 @@ if ($row['count'] == 0) {
             'genus' => 'Monstera',
             'species' => 'M. deliciosa',
             'photo' => 'images/plant_images/Araceae_Monsterra_Deliciosa.jpg',
-            'description_pdf' => 'pdf/Monstera_Deliciosa-Detail.pdf',
+            'description_pdf' => 'plants_description/Monstera_Deliciosa-Detail.pdf',
         ],
         5 => [
             'scientific_name' => 'Lavandula angustifolia',
@@ -109,7 +157,7 @@ if ($row['count'] == 0) {
             'genus' => 'Lavandula',
             'species' => 'L. angustifolia',
             'photo' => 'images/plant_images/Lamiaceae_Lavandula_Angustifolia.jpg',
-            'description_pdf' => 'pdf/Lavandula_Angustifolia-Detail.pdf',
+            'description_pdf' => 'plants_description/Lavandula_Angustifolia-Detail.pdf',
         ],
     ];
 

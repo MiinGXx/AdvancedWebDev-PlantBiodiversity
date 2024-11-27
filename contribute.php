@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($description_ext == 'pdf') {
                 $new_description_name = str_replace(' ', '_', $scientific_name) . '.' . $description_ext;
-                $description_upload_path = 'pdf/' . $new_description_name;
+                $description_upload_path = 'plants_description/' . $new_description_name;
 
                 // Check if the pdf folder exists, if not, create it
                 if (!is_dir('pdf')) {
@@ -98,7 +98,7 @@ while ($row = $result->fetch_assoc()) {
 <head>
     <title>Plant Biodiversity Portal | Contribute</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
     <header>

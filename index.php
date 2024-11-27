@@ -29,7 +29,7 @@ if (!isset($_SESSION['user'])) {
 <head>
     <title>Plant Biodiversity Portal | Home</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>

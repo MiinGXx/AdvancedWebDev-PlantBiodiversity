@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $type = $_POST['type'];
 
     // Default profile image based on gender
-    $profile_image = ($gender == "Male") ? "images/profile_images/boys.jpg" : "images/profile_images/girl.png";
+    $profile_image = ($gender == "Male") ? "profile_images/boys.jpg" : "profile_images/girl.png";
 
     // Handle profile image upload if provided
     if (isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] == 0) {
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (in_array($image_ext, ['jpg', 'jpeg', 'png'])) {
             $new_image_name = uniqid("profile_", true) . '.' . $image_ext;
-            $image_upload_path = 'images/profile_images/' . $new_image_name;
+            $image_upload_path = 'profile_images/' . $new_image_name;
 
             // Delete the old image if exists and is different from the default
             if ($userData['profile_image'] && file_exists($userData['profile_image']) && strpos($userData['profile_image'], 'default') === false) {
@@ -86,7 +86,7 @@ $conn->close();
 <head>
     <title>Plant Biodiversity Portal | Edit Account</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
     <main class="container">
@@ -123,7 +123,7 @@ $conn->close();
             <div class="form-row">
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required value="<?php echo htmlspecialchars($userData['email']); ?>" readonly>
+                    <input type="email" id="email" name="email" required value="<?php echo htmlspecialchars($userData['email']); ?>" readonly disabled>
                 </div>
                 <div class="form-group">
                     <label for="hometown">Hometown:</label>

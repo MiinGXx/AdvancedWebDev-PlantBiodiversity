@@ -3,7 +3,7 @@
 <head>
     <title>Plant Biodiversity Portal | About</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>          
@@ -28,41 +28,27 @@
         <h3>Assignment Details</h3>
         <section class="details">
             <ul>
-                <li><strong>PHP Version</strong>
-                <?php echo phpversion(); ?></li>
-                <br>
-                <li><strong>Tasks Completed:</strong>
-                    <ul>
-                        <li>Task 1: Home Page</li>
-                        <li>Task 2: Main Menu Page</li>
-                        <li>Task 3: Plant Classification Page</li>
-                        <li>Task 4: Tutorial Page</li>
-                        <li>Task 5: Contribution Page</li>
-                        <li>Task 6: View Plant Details Page</li>
-                        <li>Task 7: Student Profile Page</li>
-                        <li>Task 8: Update Profile Page</li>
-                        <li>Task 9: Account Registration Page</li>
-                        <li>Task 10: Process Registration</li>
-                        <li>Task 11: Login Page</li>
-                        <li>Task 12: About Page</li>
-                    </ul>
+                <li><strong>What tasks have you not attempted or not completed?</strong>
+                    <p>All tasks have been attempted and completed</p>
                 </li>
-                <br>
-                <li><strong>Tasks Not Completed:</strong>
-                    <ul>
-                        <li>None</li>
-                    </ul>
-                <li><strong>Frameworks/Libraries Used:</strong>
-                    <ul>
-                        <li><a href="https://fonts.google.com/about" target="_blank">Google Fonts</a></li>
-                    </ul>
+
+                <li><strong>Which parts did you have trouble with?</strong>
+                    <p>I faced challenges in implementing the plant image classifier. Optimizing the classifier for performance and integrating it seamlessly with the web application required significant effort and debugging.</p>
+                </li>
+
+                <li><strong>What would you like to do better next time?</strong>
+                    <p>Next time, I would like to improve the user interface and user experience of the web application. I would also like to explore more advanced machine learning models and techniques to enhance the plant image classifier.</p>
+                </li>
+
+                <li><strong>What extension features/extra challenges have you done, or attempted, when creating the site?</strong>
+                    <p>I have implemented a plant image classifier using a pre-trained deep learning model. The classifier can identify the plant species from an image uploaded by the user.</p>
                 </li>
             </ul>
         </section>
 
         <section class="button-group">
             <strong>Video Presentation</strong>
-            <a href="https://youtu.be/IfIQahEw0xU" target="_blank" class="button">Watch here</a> <br><br>
+            <a href="https://youtu.be/oJSQ9nfDTuU" target="_blank" class="button">Watch here</a> <br><br>
             <strong>Return to Home Page</strong>
             <a href="index.php" class="button">Back to home page</a>
         </section>

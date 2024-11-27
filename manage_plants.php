@@ -40,7 +40,7 @@ $result = $conn->query("SELECT id, Scientific_Name, Common_Name, Family, Genus, 
 <head>
     <title>Plant Biodiversity Portal | Manage Plants</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>

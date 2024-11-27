@@ -11,7 +11,7 @@ if (!isset($_SESSION['email']) || $_SESSION['type'] != 'user') {
 <head>
     <title>Plant Biodiversity Portal | Main Menu</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>          

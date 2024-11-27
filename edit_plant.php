@@ -72,7 +72,7 @@ $conn->close();
 <head>
     <title>Edit Plant</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="edit-plant">
     <header>

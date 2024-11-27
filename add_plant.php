@@ -91,7 +91,7 @@ $conn->close();
 <head>
     <title>Plant Biodiversity Portal | Add New Plant</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
     <main class="container">
